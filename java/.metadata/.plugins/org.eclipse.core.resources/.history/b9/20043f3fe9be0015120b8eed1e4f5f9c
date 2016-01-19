@@ -1,0 +1,36 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+public class LeitorRfid implements Runnable {
+
+	private boolean continuar = true;
+	private String porta = null;
+	
+	public LeitorRfid(String porta) {
+		this.porta = porta;
+	}
+	
+	@Override
+	public void run() {
+		continuar = true;
+		
+		IRfid rfid = FabricaRfid.getInstancia();
+		rfid._Z7iniciarPc(porta);
+		
+		while (continuar) {
+			String id = rfid._Z3lerv();
+			
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		rfid._Z9finalizarv();
+	}
+	
+	public void parar() {
+		continuar = false;
+	}
+
+}

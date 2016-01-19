@@ -1,0 +1,7 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+public interface IRfid {
+	
+	public int iniciar(String porta);
+
+}

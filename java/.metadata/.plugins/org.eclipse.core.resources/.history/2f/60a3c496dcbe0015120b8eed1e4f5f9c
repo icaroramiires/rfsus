@@ -1,0 +1,9 @@
+package br.edu.ifba.rfsus;
+
+public interface Identificacao {
+	
+	public void setRFID(String rfid);
+	
+	public void setDadosPaciente(Paciente paciente);
+
+}

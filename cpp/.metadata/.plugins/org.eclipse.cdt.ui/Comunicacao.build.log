@@ -1,0 +1,20 @@
+10:47:41 **** Incremental Build of configuration Debug for project Comunicacao ****
+make all 
+Building file: ../src/observadores/ObservadorSerial.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/mf/ifba/workspaces/rfsus/cpp/Comunicacao/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/observadores/ObservadorSerial.d" -MT"src/observadores/ObservadorSerial.d" -o "src/observadores/ObservadorSerial.o" "../src/observadores/ObservadorSerial.cpp"
+Finished building: ../src/observadores/ObservadorSerial.cpp
+ 
+Building file: ../src/ComunicacaoUsuarioSistema.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/mf/ifba/workspaces/rfsus/cpp/Comunicacao/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ComunicacaoUsuarioSistema.d" -MT"src/ComunicacaoUsuarioSistema.d" -o "src/ComunicacaoUsuarioSistema.o" "../src/ComunicacaoUsuarioSistema.cpp"
+Finished building: ../src/ComunicacaoUsuarioSistema.cpp
+ 
+Building target: Comunicacao
+Invoking: GCC C++ Linker
+g++  -o "Comunicacao"  ./src/serial/SerialComm.o  ./src/observadores/ObservadorSerial.o  ./src/notificacoes/NotificacaoRFID.o  ./src/ComunicacaoUsuarioSistema.o   -lpthread
+Finished building target: Comunicacao
+ 
+
+10:47:41 Build Finished (took 672ms)
+

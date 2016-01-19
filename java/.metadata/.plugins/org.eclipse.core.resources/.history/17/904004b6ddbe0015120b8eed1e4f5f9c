@@ -1,0 +1,13 @@
+package br.edu.ifba.rfsus;
+
+import br.edu.ifba.rfsus.ui.Identificacao;
+
+public class Executor {
+
+	public static void main(String[] args) {
+		IIdentificacao identificao = new Identificacao();
+		
+
+	}
+
+}

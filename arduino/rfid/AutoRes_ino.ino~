@@ -1,0 +1,214 @@
+#include <SoftwareSerial.h>
+ 
+// leitor rfid  
+SoftwareSerial rfid = SoftwareSerial(12, 13);
+String id;
+char digitoId;
+
+// configura porta de comunicacao serial
+void setupSerial() {
+  Serial.begin(9600);
+}
+
+// configura o leitor rfid
+void setupRFID() {
+  rfid.begin(9600);
+}
+ 
+// realiza a leitura de um id serial 
+void lerRFID()
+{
+  while(rfid.available()>0)
+  {
+    digitoId = rfid.read();
+    id += digitoId;
+  }
+  if (id.length() > 9) {
+    id = "ID:" + id.substring(1, 9) + ";";
+    Serial.print(id);
+    id = "";
+  }
+}
+
+// envia a leitura de sensores
+void enviarSensores() 
+{
+  lerRFID();
+}
+
+// realiza o controle do portao
+void acionarPortao()
+{
+  if ((comando == ABRIR_PORTAO) || (comando == FECHAR_PORTAO))
+  {
+    if (comando == ultimoCmdPortao){
+      return;
+    }
+    else
+    {
+      ultimoCmdPortao = comando;
+    }
+    
+    int passosMotor = 7;
+    if (comando == FECHAR_PORTAO){ 
+      passosMotor = 0;
+   
+    }
+  
+    int tempoRotacionamento = parametro1 * 1000 + parametro2 * 100;
+    while (tempoRotacionamento > 0) {
+      switch (passosMotor){ 
+      case 0: 
+       digitalWrite(PinPortao0, LOW); 
+       digitalWrite(PinPortao1, LOW); 
+       digitalWrite(PinPortao2, LOW); 
+       digitalWrite(PinPortao3, HIGH); 
+       break; 
+      case 1: 
+       digitalWrite(PinPortao0, LOW); 
+       digitalWrite(PinPortao1, LOW); 
+       digitalWrite(PinPortao2, HIGH); 
+       digitalWrite(PinPortao3, HIGH); 
+       break; 
+      case 2: 
+       digitalWrite(PinPortao0, LOW); 
+       digitalWrite(PinPortao1, LOW); 
+       digitalWrite(PinPortao2, HIGH); 
+       digitalWrite(PinPortao3, LOW); 
+       break; 
+      case 3: 
+       digitalWrite(PinPortao0, LOW); 
+       digitalWrite(PinPortao1, HIGH); 
+       digitalWrite(PinPortao2, HIGH); 
+       digitalWrite(PinPortao3, LOW); 
+       break; 
+      case 4: 
+       digitalWrite(PinPortao0, LOW); 
+       digitalWrite(PinPortao1, HIGH); 
+       digitalWrite(PinPortao2, LOW); 
+       digitalWrite(PinPortao3, LOW); 
+       break; 
+      case 5: 
+       digitalWrite(PinPortao0, HIGH); 
+       digitalWrite(PinPortao1, HIGH); 
+       digitalWrite(PinPortao2, LOW);
+       digitalWrite(PinPortao3, LOW); 
+       break; 
+      case 6: 
+       digitalWrite(PinPortao0, HIGH); 
+       digitalWrite(PinPortao1, LOW); 
+       digitalWrite(PinPortao2, LOW); 
+       digitalWrite(PinPortao3, LOW); 
+       break; 
+      case 7: 
+       digitalWrite(PinPortao0, HIGH); 
+       digitalWrite(PinPortao1, LOW); 
+       digitalWrite(PinPortao2, LOW); 
+       digitalWrite(PinPortao3, HIGH); 
+       break; 
+      } 
+
+      if (comando == FECHAR_PORTAO){ 
+        passosMotor++;
+        if (passosMotor > 7)
+        {
+          passosMotor = 0;
+        }
+  
+      } 
+      else
+      {
+        passosMotor--;
+        if (passosMotor < 0)
+        {
+          passosMotor = 7;
+        }
+
+      }
+    
+      tempoRotacionamento--;
+    
+      delay(1);
+    }
+   } 
+  
+  // desliga o motor ao final do rotacionamento
+  digitalWrite(PinPortao0, LOW); 
+  digitalWrite(PinPortao1, LOW); 
+  digitalWrite(PinPortao2, LOW); 
+  digitalWrite(PinPortao3, LOW);   
+}
+
+// realiza o controle de liga e desliga da iluminacao
+void acionarIluminacao()
+{
+  if (comando == LIGAR_LUZES)
+  {
+    analogWrite(parametro1, 255);
+  }
+  else if (comando == DESLIGAR_LUZES)
+  {
+    analogWrite(parametro1, 0);
+  }  
+  
+}
+
+void desligarTudo(){
+  
+  if (comando == DESLIGAR_TUDO)
+  {
+   analogWrite(DISPOSITIVO_ILUM1 , LOW); 
+   analogWrite(DISPOSITIVO_ILUM2 , LOW);
+   analogWrite(DISPOSITIVO_ILUM3 , LOW);
+   analogWrite(DISPOSITIVO_ILUM4 , LOW);
+   analogWrite(DISPOSITIVO_ILUM5 , LOW);
+   analogWrite(DISPOSITIVO_ILUM6 , LOW);
+   digitalWrite(DISPOSITIVO_ILUM7 , LOW);
+  }
+}
+
+// controla a intensidade da iluminacao
+void controlarIntensidadeIluminacao() 
+{
+  if (comando == CONTROLAR_INTENSIDADE_ILUMINACAO)
+  {
+    int intensidade = parametro2 ;
+    analogWrite(parametro1, intensidade);
+  }
+}
+
+// realiza a leitura do comando pendente na porta serial
+void lerComando()
+{
+  comando = SEM_COMANDO;
+  int disponiveis = Serial.available(); 
+  if (disponiveis > 0) {
+    comando = Serial.read();
+    if (disponiveis > 1) {
+      parametro1 = Serial.read();
+      if (disponiveis > 2) {
+        parametro2 = Serial.read();  
+      }
+    }
+  }
+}
+ 
+// inicializa os recursos necessarios da solucao
+void setup() {
+  setupSerial();
+  setupRFID();
+  setupPortao();
+  setupIluminacao();
+}
+ 
+// loop da aplicacao
+void loop() {
+  lerComando();
+  desligarTudo();
+  acionarPortao();
+  acionarIluminacao();
+  controlarIntensidadeIluminacao();
+  delay(1500);
+  enviarSensores();
+  delay(500);
+}

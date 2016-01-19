@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="com.sun.jna.Platform"/>
+<fullyQualifiedTypeName name="com.sun.jna.Native"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.FabricaRfid"/>
+</qualifiedTypeNameHistroy>

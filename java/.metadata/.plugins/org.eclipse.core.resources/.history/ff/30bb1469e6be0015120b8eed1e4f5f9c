@@ -1,0 +1,12 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+public class FabricaRfid {
+
+	public static IRfid getInstancia() {
+		IRfid rfid = null;
+		
+		
+		return rfid;
+	}
+	
+}

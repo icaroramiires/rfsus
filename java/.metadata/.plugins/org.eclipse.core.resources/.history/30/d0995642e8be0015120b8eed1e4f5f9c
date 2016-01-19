@@ -1,0 +1,5 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+public class LeitorRfid implements Runnable {
+
+}

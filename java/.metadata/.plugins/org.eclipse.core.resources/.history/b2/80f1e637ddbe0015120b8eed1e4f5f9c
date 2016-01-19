@@ -1,0 +1,29 @@
+package br.edu.ifba.rfsus.ui;
+
+import br.edu.ifba.rfsus.IIdentificacao;
+import br.edu.ifba.rfsus.bean.Paciente;
+
+@SuppressWarnings("serial")
+public class Identificacao extends IdentificacaoUI implements IIdentificacao {
+
+	@Override
+	public void setRFID(String rfid) {
+		this.tfIdentificacao.setText(rfid);
+		
+		pesquisarPorRFID();
+	}
+
+	@Override
+	public void pesquisarPorRFID() {
+		System.out.println("Pesquisando pelo RFID...");
+		
+		
+	}
+
+	@Override
+	public void setDadosPaciente(Paciente paciente) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package br.edu.ifba.rfsus;
+
+public class Executor {
+
+	public static void main(String[] args) {
+		IIdentificacao identificao = new Identificacao();
+		
+
+	}
+
+}

@@ -1,0 +1,24 @@
+package br.edu.ifba.rfsus;
+
+import br.edu.ifba.rfsus.jna.rfid.LeitorRfid;
+import br.edu.ifba.rfsus.ui.Identificacao;
+import br.edu.ifba.rfsus.ui.IdentificacaoUI;
+
+public class Executor {
+
+	private static final String PORTA_RFID = "/dev/ttyACM0";
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		Identificacao identificacao = new Identificacao();
+		identificacao.pack();
+		identificacao.setVisible(true);
+
+		LeitorRfid leitor = new LeitorRfid(PORTA_RFID, identificacao);
+		Thread tLeitor = new Thread(leitor);
+		tLeitor.start();
+		
+		Thread.sleep(10000);
+	}
+
+}

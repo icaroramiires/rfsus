@@ -1,0 +1,13 @@
+package br.edu.ifba.rfsus.bean;
+
+import java.util.Date;
+
+public class Paciente {
+	
+	private String rg;
+	private String nome;
+	private Date dataNascimento;
+	private String observacoes;
+	
+
+}

@@ -1,0 +1,32 @@
+package br.edu.ifba.rfsus;
+
+import br.edu.ifba.rfsus.jna.rfid.FabricaRfid;
+import br.edu.ifba.rfsus.jna.rfid.IRfid;
+import br.edu.ifba.rfsus.ui.Identificacao;
+import br.edu.ifba.rfsus.ui.IdentificacaoUI;
+
+public class Executor {
+
+	public static void main(String[] args) throws InterruptedException {
+		IRfid rfid = FabricaRfid.getInstancia();
+		rfid.iniciar("/dev/ttyACM0");
+		
+		String id = rfid.ler();
+		System.out.println("id = " + id);
+		
+		
+		IdentificacaoUI identificacao = new Identificacao();
+		
+		identificacao.pack();
+		identificacao.setVisible(true);
+		
+		// acionar o loop de leitura do rfid
+		((IIdentificacao)identificacao).setRFID("1234ADT");
+		
+		Thread.sleep(10000);
+
+		((IIdentificacao)identificacao).setRFID("87654LK");
+
+	}
+
+}

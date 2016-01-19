@@ -1,0 +1,58 @@
+#include "serial/SerialComm.h"
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+using namespace std;
+
+#ifdef __linux__
+// macro para acesso a comando de sleep no linux
+#include <unistd.h>
+#define Sleep(x) usleep(x * 1000);
+#endif
+
+int iniciar(char* porta) {
+
+}
+
+char* ler() {
+
+}
+
+int finalizar() {
+
+}
+
+
+int main() {
+
+	// cria instancia de classe comunicacao USB
+	SerialComm serial(COM_PORTA);
+
+	// cria instancia de classe Observador
+	ObservadorSerial observador(serial);
+
+	// cria instancias de notificacoes
+	NotificacaoRFID notificacaoRFID;
+
+	// repassa notificacoes para o observador
+	observador.addNotificacao(&notificacaoRFID);
+
+	//Chamada para iniciar o observador
+	observador.iniciar();
+
+	//Loop para o programa nao fechar
+	int tempo = 20;
+	while (tempo > 0) {
+		Sleep(1000);
+
+		tempo--;
+	}
+
+	observador.finalizar();
+
+	Sleep(3000);
+}
+

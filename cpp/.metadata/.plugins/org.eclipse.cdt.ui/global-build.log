@@ -1,0 +1,21 @@
+17:00:29 **** Incremental Build of configuration Release for project rfid ****
+make all 
+Building file: ../src/Extern.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/mf/ifba/workspaces/rfsus/cpp/serial/include" -I"/mf/ifba/workspaces/rfsus/cpp/rfid/include" -O3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/Extern.d" -MT"src/Extern.d" -o "src/Extern.o" "../src/Extern.cpp"
+../src/Extern.cpp: In function 'char* ler()':
+../src/Extern.cpp:31:20: warning: unused variable 'bytesLidos' [-Wunused-variable]
+  long unsigned int bytesLidos;
+                    ^
+Finished building: ../src/Extern.cpp
+ 
+Building file: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -MT".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -o ".metadata/.plugins/org.eclipse.cdt.make.core/specs.o" "../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c"
+Finished building: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c
+ 
+Building target: rfid.so
+Invoking: GCC C++ Linker
+g++ -L"/mf/ifba/workspaces/rfsus/cpp/serial/Release" -shared -o "rfid.so"  ./src/Extern.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -lserial
+Finished building target: rfid.so
+ 

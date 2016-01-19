@@ -1,0 +1,43 @@
+package br.edu.ifba.rfsus.ui;
+
+import br.edu.ifba.rfsus.IIdentificacao;
+import br.edu.ifba.rfsus.bean.Paciente;
+
+@SuppressWarnings("serial")
+public class Identificacao extends IdentificacaoUI implements IIdentificacao {
+
+	@Override
+	public void exibir() {
+		identificacao.pack();
+		identificacao.setVisible(true);
+		
+	}
+	
+	@Override
+	public void setRFID(String rfid) {
+		this.tfIdentificacao.setText(rfid);
+		
+		pesquisarPorRFID();
+	}
+
+	@Override
+	public void pesquisarPorRFID() {
+		System.out.println("Pesquisando pelo RFID...");
+		
+		// TODO adicionar pesquisa no banco de dados
+		
+		Paciente paciente = new Paciente();
+		paciente.setRg("123456789");
+		paciente.setNome("Astrogildo da Silva");
+		paciente.setObservacoes("Nada a observar");
+		
+		this.setDadosPaciente(paciente);
+	}
+
+	@Override
+	public void setDadosPaciente(Paciente paciente) {
+		this.lblRG.setText(paciente.getRg());
+		this.lblNome.setText(paciente.getNome());
+	}
+
+}

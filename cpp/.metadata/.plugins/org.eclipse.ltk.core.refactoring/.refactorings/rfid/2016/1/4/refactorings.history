@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;rfid/src/ComunicacaoUsuarioSistema.cpp&apos; to &apos;Extern.cpp&apos;" description="Rename resource &apos;ComunicacaoUsuarioSistema.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/ComunicacaoUsuarioSistema.cpp" name="Extern.cpp" stamp="1453231161231" updateReferences="true"/>
+</session>
