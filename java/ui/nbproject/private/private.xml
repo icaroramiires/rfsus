@@ -4,7 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/webmaster/workspace/rfsus/java/ui/src/br/edu/ifba/rfsus/ui/ConsultaUI.java</file>
+            <file>file:/home/webmaster/workspace/rfsus/java/ui/src/br/edu/ifba/rfsus/ui/AtendimentoUI.java</file>
             <file>file:/home/webmaster/workspace/rfsus/java/ui/src/br/edu/ifba/rfsus/ui/IdentificacaoUI.java</file>
+            <file>file:/home/webmaster/workspace/rfsus/java/ui/src/br/edu/ifba/rfsus/ui/HistoricoUI.java</file>
         </group>
     </open-files>
 </project-private>
