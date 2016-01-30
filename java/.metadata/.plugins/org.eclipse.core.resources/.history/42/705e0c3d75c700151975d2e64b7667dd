@@ -1,0 +1,14 @@
+package br.edu.ifba.rfsus.bd;
+
+public class FachadaBD {
+	private static FachadaBD instancia = null;
+	
+	private FachadaBD() {}
+	
+	public static FachadaBD getInstancia(){
+		if(instancia == null){
+			instancia = new FachadaBD();
+		}
+		return instancia;
+	}
+}

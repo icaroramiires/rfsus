@@ -1,0 +1,25 @@
+package br.edu.ifba.rfsus.bd;
+
+import com.mongodb.DB;
+
+import br.edu.ifba.rfsus.bean.Paciente;
+
+public class FachadaPaciente {
+	private static FachadaPaciente instancia = null;
+
+	private FachadaPaciente() {
+	}
+
+	public static FachadaPaciente getInstancia() {
+		if (instancia == null) {
+			instancia = new FachadaPaciente();
+		}
+		return instancia;
+	}
+	
+	public Paciente getPacienteById(String rfid){
+		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");
+		return null;
+	}
+
+}

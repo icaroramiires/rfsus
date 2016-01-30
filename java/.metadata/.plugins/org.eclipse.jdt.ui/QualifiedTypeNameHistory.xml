@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="com.sun.jna.Platform"/>
 <fullyQualifiedTypeName name="com.sun.jna.Native"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.FabricaRfid"/>
+<fullyQualifiedTypeName name="java.lang.InstantiationError"/>
+<fullyQualifiedTypeName name="com.mongodb.ServerAddress"/>
+<fullyQualifiedTypeName name="com.mongodb.MongoCredential"/>
+<fullyQualifiedTypeName name="com.mongodb.MongoClient"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="com.mongodb.client.MongoDatabase"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.bd.FachadaBD"/>
+<fullyQualifiedTypeName name="com.mongodb.DBCollection"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.bd.FachadaPaciente"/>
+<fullyQualifiedTypeName name="com.mongodb.DBObject"/>
+<fullyQualifiedTypeName name="com.mongodb.BasicDBObject"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.bean.Paciente"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="com.mongodb.DBCursor"/>
 </qualifiedTypeNameHistroy>

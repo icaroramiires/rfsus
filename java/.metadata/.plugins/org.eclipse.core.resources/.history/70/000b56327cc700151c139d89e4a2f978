@@ -1,0 +1,37 @@
+package br.edu.ifba.rfsus.bd;
+
+import java.util.Date;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+
+import br.edu.ifba.rfsus.bean.Paciente;
+
+public class FachadaPaciente {
+	private static FachadaPaciente instancia = null;
+
+	private FachadaPaciente() {
+	}
+
+	public static FachadaPaciente getInstancia() {
+		if (instancia == null) {
+			instancia = new FachadaPaciente();
+		}
+		return instancia;
+	}
+	
+	public Paciente getPacienteById(String rfid){
+		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");
+		DBCollection collection = db.getCollection("paciente");
+		BasicDBObject query = new BasicDBObject("rfid", rfid);
+		//DBCursor cursor = collection.find(query);
+		//System.out.println(cursor.count());
+		//System.out.println(query.get("rfid"));
+		Paciente paciente = new Paciente();
+		paciente.setRg((String)query.get("rg"));
+		paciente.setNome((String)query.get("nome"));
+		paciente.setDataNascimento((Date)query.get("data_nascimento"));
+	}
+
+}

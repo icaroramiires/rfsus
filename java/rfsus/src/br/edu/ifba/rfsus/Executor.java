@@ -1,27 +1,27 @@
 package br.edu.ifba.rfsus;
 
+import br.edu.ifba.rfsus.bd.FachadaBD;
 import br.edu.ifba.rfsus.jna.rfid.LeitorRfid;
 import br.edu.ifba.rfsus.ui.Identificacao;
 
 public class Executor {
 
 	private static final String PORTA_RFID = "/dev/ttyACM0";
-	
+
 	public static void main(String[] args) throws InterruptedException {
-		// FachadaBd fachadaBd = new
-		// fachadaBd.iniciar(parametros de inicializacao do banco)
-		
+		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "root");
+
 		Identificacao identificacao = new Identificacao();
 		identificacao.exibir();
 
 		Thread.sleep(5000);
-		
+
 		LeitorRfid leitor = new LeitorRfid(PORTA_RFID, identificacao);
 		Thread tLeitor = new Thread(leitor);
 		tLeitor.start();
-		
+
 		Thread.sleep(20000);
-		
+
 		leitor.parar();
 		tLeitor.join();
 	}

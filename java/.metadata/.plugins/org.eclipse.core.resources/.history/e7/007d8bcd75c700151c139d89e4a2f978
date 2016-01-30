@@ -1,0 +1,21 @@
+package br.edu.ifba.rfsus.bd;
+
+public class FachadaBD {
+	private static FachadaBD instancia = null;
+	
+	private String host;
+	private int port;
+	private String dbName;
+	private String user;
+	private 
+	
+	private FachadaBD() {}
+	
+	public static FachadaBD getInstancia(){
+		if(instancia == null){
+			instancia = new FachadaBD();
+		}
+		return instancia;
+	}
+	
+}
