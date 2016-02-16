@@ -30,7 +30,7 @@ int iniciar(char* porta) {
 char* ler() {
 	long unsigned int bytesLidos;
 
-	valorLido = "12345ASDL";
+	valorLido = "310047ACD50F";
 
 	/*
 	string valorLido = serial.ler(TAM_RFID, bytesLidos);

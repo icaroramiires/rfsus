@@ -45,7 +45,7 @@ all: rfid.so
 rfid.so: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ -L"/mf/ifba/workspaces/rfsus/cpp/serial/Release" -shared -o "rfid.so" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -L"/home/webmaster/workspace/rfsus/cpp/serial/Release" -shared -o "rfid.so" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
