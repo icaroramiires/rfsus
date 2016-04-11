@@ -1,0 +1,49 @@
+package br.edu.ifba.rfsus.ui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import br.edu.ifba.rfsus.IAtendimento;
+import br.edu.ifba.rfsus.bd.FachadaPaciente;
+import br.edu.ifba.rfsus.bean.Paciente;
+
+public class Atendimento extends AtendimentoUI implements IAtendimento, ActionListener {
+
+	private static final String PORTA_RFID = "/dev/ttyACM0";
+	@Override
+	public void exibir() {
+		pack();
+		setVisible(true);
+	}
+
+	@Override
+	public void setRfid(String rfid) {
+		this.jlblNome.setText(rfid);
+		pesquisarPorRfid(rfid);
+	}
+
+	@Override
+	public void pesquisarPorRfid(String rfid) {
+		// TODO Auto-generated method stub
+		System.out.println("Pesquisando pelo RFID...");
+
+		// TODO adicionar pesquisa no banco de dados
+		Paciente paciente = FachadaPaciente.getInstancia().getPacienteById(rfid);
+		this.setDadosPaciente(paciente);
+	}
+
+	@Override
+	public void setDadosPaciente(Paciente paciente) {
+		this.jlblNome.setText(paciente.getNome());
+		this.jlblLeituraTemp.setText("38º");
+		this.jlblLeituraCardiaca.setText("100 bmp");
+		this.jtxtaAvaliacao.setText("Internamento");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Atendimento atendimento = new Atendimento();
+		
+	}
+
+}

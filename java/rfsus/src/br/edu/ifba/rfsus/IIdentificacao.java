@@ -10,13 +10,15 @@ public interface IIdentificacao {
 	public void exibir();
 
 	// 2. capturar e exibir o RFID
-	public void setRFID(String rfid);
+	public void setRfid(String rfid);
 
 	// 3. de posse do RFID, realiza a pesquisa no banco de dados. Deve retornar
 	// um soh paciente
-	public void pesquisarPorRFID(String rfid);
+	public void pesquisarPorRfid(String rfid);
 
 	// 4. apos retorna o paciente, deve exibir os dados dele para conferencia
 	public void setDadosPaciente(Paciente paciente);
 
+	// 5. dar entrada do paciente para o modulo de consulta
+	public void darEntrada();
 }

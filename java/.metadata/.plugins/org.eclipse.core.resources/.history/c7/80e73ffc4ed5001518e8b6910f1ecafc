@@ -1,0 +1,34 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+import br.edu.ifba.rfsus.IConsulta;
+import br.edu.ifba.rfsus.ui.Consulta;
+
+public class LeitorRfidConsulta implements Runnable {
+	private IConsulta consulta = null;
+	private boolean continuar = false;
+	private String porta = null;
+
+	public LeitorRfidConsulta(String porta, IConsulta consulta) {
+		this.porta = porta;
+		this.consulta = consulta;
+	}
+
+	@Override
+	public void run() {
+		continuar = true;
+		IRfid rfid = FabricaRfid.getInstancia();
+		rfid._Z7iniciarPc(porta);
+		while (continuar) {
+			String id = rfid._Z3lerv();
+			if(id != null){
+				consulta.setRfid(id);
+			}
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

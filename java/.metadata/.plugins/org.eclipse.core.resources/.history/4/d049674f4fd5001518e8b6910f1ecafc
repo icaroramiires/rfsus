@@ -1,0 +1,11 @@
+package br.edu.ifba.rfsus.ui;
+
+public class Consulta extends ConsultaUI{
+	public void exibir(){
+		pack();
+		setVisible(true);
+	}
+	public void setRfid(String rfid){
+		
+	}
+}

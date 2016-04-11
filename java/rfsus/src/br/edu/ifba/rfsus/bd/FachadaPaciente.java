@@ -1,5 +1,6 @@
 package br.edu.ifba.rfsus.bd;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.mongodb.BasicDBObject;
@@ -36,8 +37,11 @@ public class FachadaPaciente {
 		paciente.setRg((String) cursor.one().get("rg"));
 		paciente.setNome((String) cursor.one().get("nome"));
 		paciente.setDataNascimento((Date) cursor.one().get("data_nascimento"));
-		paciente.setObservacoes((String)cursor.one().get("observacao"));
-	
+		paciente.setAltura((Double)cursor.one().get("altura")); 
+		paciente.setPeso((Double)cursor.one().get("peso")); 
+		paciente.setTipoSanguineo((String)cursor.one().get("tipo_sanguineo")); 
+		paciente.setObservacoes((ArrayList<String>)cursor.one().get("observacao"));
+		
 		return paciente;
 	}
 

@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="com.sun.jna.Platform"/>
 <fullyQualifiedTypeName name="com.sun.jna.Native"/>
-<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.FabricaRfid"/>
 <fullyQualifiedTypeName name="java.lang.InstantiationError"/>
 <fullyQualifiedTypeName name="com.mongodb.ServerAddress"/>
 <fullyQualifiedTypeName name="com.mongodb.MongoCredential"/>
@@ -17,4 +16,20 @@
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.bean.Paciente"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="com.mongodb.DBCursor"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.ConsultaUI"/>
+<fullyQualifiedTypeName name="com.sun.jna.Library"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.IRfid"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.FabricaRfid"/>
+<fullyQualifiedTypeName name="java.lang.InterruptedException"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.Consulta"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.IIdentificacao"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.LeitorRfidConsulta"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.IConsulta"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.swing.JList"/>
+<fullyQualifiedTypeName name="javax.swing.DefaultListModel"/>
 </qualifiedTypeNameHistroy>

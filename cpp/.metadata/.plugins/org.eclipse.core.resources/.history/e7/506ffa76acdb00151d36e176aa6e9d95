@@ -1,0 +1,22 @@
+/*
+ * Teste.cpp
+ *
+ *  Created on: 25 de fev de 2016
+ *      Author: webmaster
+ */
+
+#include "Extern.h"
+#include "SerialComm.h"
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char **argv) {
+	SerialComm serial = SerialComm("/dev/ttyACM0");
+	if(serial.iniciar() == EXIT_SUCCESS){
+
+	}
+	return 0;
+}
+
+

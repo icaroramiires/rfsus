@@ -1,0 +1,14 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+import br.edu.ifba.rfsus.IConsulta;
+
+public class LeitorRfidConsulta {
+	private IConsulta consulta = null;
+	private boolean continuar = false;
+	private String porta = null;
+
+	public LeitorRfidConsulta(String porta, IConsulta consulta) {
+		this.porta = porta;
+		this.consulta = consulta;
+	}
+}

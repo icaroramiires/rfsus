@@ -1,0 +1,4 @@
+src/Test.d: ../src/Test.cpp \
+ /home/webmaster/workspace/rfsus/cpp/serial/include/Comunicacao.h
+
+/home/webmaster/workspace/rfsus/cpp/serial/include/Comunicacao.h:

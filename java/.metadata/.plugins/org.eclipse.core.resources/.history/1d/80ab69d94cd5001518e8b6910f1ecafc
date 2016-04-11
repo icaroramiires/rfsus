@@ -1,0 +1,10 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+import com.sun.jna.Library;
+
+public interface IRfidConsulta extends Library {
+	public int _Z7iniciarPc(String porta);
+	public String _Z3lerv();
+	public int _Z9finalizarv();
+
+}

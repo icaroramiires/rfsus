@@ -1,16 +1,6 @@
-16:38:29 **** Incremental Build of configuration Release for project serial ****
+22:51:15 **** Incremental Build of configuration Release for project serial ****
 make all 
-Building file: ../src/SerialComm.cpp
-Invoking: GCC C++ Compiler
-g++ -I"/mf/ifba/workspaces/rfsus/cpp/serial/include" -O3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/SerialComm.d" -MT"src/SerialComm.d" -o "src/SerialComm.o" "../src/SerialComm.cpp"
-Finished building: ../src/SerialComm.cpp
- 
-Building target: libserial.a
-Invoking: GCC Archiver
-ar -r  "libserial.a"  ./src/SerialComm.o   
-ar: criando libserial.a
-Finished building target: libserial.a
- 
+make: Nothing to be done for 'all'.
 
-16:38:29 Build Finished (took 367ms)
+22:51:15 Build Finished (took 295ms)
 

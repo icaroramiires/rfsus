@@ -1,0 +1,7 @@
+package br.edu.ifba.rfsus;
+
+public interface IConsulta {
+	public void exibir();
+	public void setRfid(String id);
+
+}

@@ -1,11 +1,20 @@
 package br.edu.ifba.rfsus.ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 import br.edu.ifba.rfsus.IIdentificacao;
 import br.edu.ifba.rfsus.bd.FachadaPaciente;
 import br.edu.ifba.rfsus.bean.Paciente;
+import br.edu.ifba.rfsus.jna.rfid.LeitorRfidConsulta;
 
 @SuppressWarnings("serial")
-public class Identificacao extends IdentificacaoUI implements IIdentificacao {
+public class Identificacao extends IdentificacaoUI implements IIdentificacao, ActionListener {
+
+	private static final String PORTA_RFID = "/dev/ttyACM0";
 
 	@Override
 	public void exibir() {
@@ -14,14 +23,14 @@ public class Identificacao extends IdentificacaoUI implements IIdentificacao {
 	}
 
 	@Override
-	public void setRFID(String rfid) {
+	public void setRfid(String rfid) {
 		this.tfIdentificacao.setText(rfid);
 
-		pesquisarPorRFID(rfid);
+		pesquisarPorRfid(rfid);
 	}
 
 	@Override
-	public void pesquisarPorRFID(String rfid) {
+	public void pesquisarPorRfid(String rfid) {
 		System.out.println("Pesquisando pelo RFID...");
 
 		// TODO adicionar pesquisa no banco de dados
@@ -34,7 +43,29 @@ public class Identificacao extends IdentificacaoUI implements IIdentificacao {
 		this.lblRG.setText(paciente.getRg());
 		this.lblNome.setText(paciente.getNome());
 		this.lblDataNasc.setText(paciente.getDataNascimento().toString());
-		this.jtpObersevacoes.setText(paciente.getObservacoes());
+		DefaultListModel<String> info = new DefaultListModel<>();
+		for(String x : paciente.getObservacoes()){
+			info.addElement(x);
+		}
+		
+		this.jlObservacoes.setModel(info);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Consulta consulta = new Consulta();
+		consulta.exibir();
+		consulta.atendimento();
+		LeitorRfidConsulta leitorRfidConsulta = new LeitorRfidConsulta(PORTA_RFID, consulta);
+		Thread tLeitorConsulta = new Thread(leitorRfidConsulta);
+		tLeitorConsulta.start();
+		leitorRfidConsulta.parar();
+	}
+
+	@Override
+	public void darEntrada() {
+		jbntDarEntrada.addActionListener(this);
+
 	}
 
 }

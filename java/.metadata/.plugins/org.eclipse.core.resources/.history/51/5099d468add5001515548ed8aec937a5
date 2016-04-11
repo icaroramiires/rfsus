@@ -1,0 +1,14 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+import br.edu.ifba.rfsus.IAtendimento;
+
+public class LeitorRfidAtendimento implements Runnable{
+	private IAtendimento atendimento = null;
+	private boolean continuar = false;
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+}

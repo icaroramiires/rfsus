@@ -1,0 +1,7 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+import com.sun.jna.Library;
+
+public interface IRfidConsulta extends Library {
+	
+}

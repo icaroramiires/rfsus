@@ -19,13 +19,13 @@ public class LeitorRfid implements Runnable {
 		continuar = true;
 
 		IRfid rfid = FabricaRfid.getInstancia();
-		rfid._Z7iniciarPc(porta);
+		rfid.iniciar(porta);
 
 		while (continuar) {
-			String id = rfid._Z3lerv();
+			String id = rfid.ler();
 
 			if (id != null) {
-				identificacao.setRFID(id);
+				identificacao.setRfid(id);
 			}
 
 			try {
@@ -35,7 +35,7 @@ public class LeitorRfid implements Runnable {
 			}
 		}
 
-		rfid._Z9finalizarv();
+		rfid.finalizar();
 	}
 
 	public void parar() {

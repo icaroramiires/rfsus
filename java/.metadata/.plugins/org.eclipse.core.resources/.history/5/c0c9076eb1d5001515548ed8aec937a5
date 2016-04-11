@@ -1,0 +1,9 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+import br.edu.ifba.rfsus.IAtendimento;
+import br.edu.ifba.rfsus.IConsulta;
+import br.edu.ifba.rfsus.ui.Consulta;
+
+public class LeitorRfidAtendimento implements Runnable {
+
+}

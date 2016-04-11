@@ -1,0 +1,68 @@
+/*
+ * SerialComm.h
+ *
+ * Realiza a leitura e escrita de informacoes
+ * atraves da porta serial/usb do computador.
+ *
+ * Created on: 27/06/2013
+ * Author: Luis Paulo
+ */
+#ifndef LEITORRFID_H_
+#define LEITORRFID_H_
+
+#include <string>
+#if _WIN32 || _WIN64
+#include <windows.h>
+#endif
+
+//#define SEM_ARDUINO
+#define COM_ARDUINO
+
+using namespace std;
+
+#ifdef __linux__
+// macro para acesso a comando de sleep no linux
+#include <unistd.h>
+#define Sleep(x) usleep(x * 1000);
+#endif
+
+class SerialComm {
+private:
+	// nome/identificacao da porta
+	char* porta;
+#ifdef __linux__
+	int hPorta;
+#endif
+#if _WIN32 || _WIN64
+	// handle para arquivo de acesso aa porta
+	HANDLE hPorta;
+#endif
+
+public:
+	SerialComm(char* porta);
+
+	/**
+	 * realiza a configuracao da porta
+	 * COM/tty especificada, contem
+	 * estrategias para cada sistema
+	 * operacional.
+	 *
+	 * ocorrendo um erro, retorna valor
+	 * correspondente a erro ou zero
+	 * caso contrario.
+	 */
+	int iniciar();
+
+	/**
+	 * realiza a leitura de uma informacao
+	 * a partir de uma porta serial
+	 */
+	string ler(char* bytesLer, long unsigned int &bytesLidos);
+
+	/**
+	 * finaliza utilizacao da porta serial
+	 */
+	void finalizar();
+};
+
+#endif

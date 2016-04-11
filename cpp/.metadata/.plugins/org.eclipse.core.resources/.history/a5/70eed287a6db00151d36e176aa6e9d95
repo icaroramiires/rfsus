@@ -1,0 +1,155 @@
+#include <SerialComm.h>
+#include <string.h>
+#ifdef __linux__
+#include <stdio.h>
+#include <fcntl.h>
+#endif
+
+SerialComm::SerialComm(char* porta) {
+	hPorta = 0;
+	this->porta = porta;
+}
+
+int SerialComm::iniciar() {
+	int result = EXIT_SUCCESS;
+
+#if _WIN32 || _WIN64
+	hPorta = CreateFile(porta, GENERIC_READ | GENERIC_WRITE, 0, NULL,
+			OPEN_EXISTING, 0, NULL);
+
+	if (hPorta == INVALID_HANDLE_VALUE) {
+		result = GetLastError();
+	} else {
+		// configura acesso aa porta
+		DCB dcb;
+		memset(&dcb, 0, sizeof(dcb));
+		dcb.DCBlength = sizeof(dcb);
+		dcb.BaudRate = CBR_9600;
+		dcb.Parity = NOPARITY;
+		dcb.StopBits = ONESTOPBIT;
+		dcb.ByteSize = 8;
+
+		if (!SetCommState(hPorta, &dcb)) {
+			result = GetLastError();
+		}
+	}
+#endif
+
+#ifdef __linux__
+	hPorta = open(porta, O_RDWR | O_NOCTTY | O_NDELAY);
+	if (hPorta == -1) {
+		result = EXIT_FAILURE;
+	} else {
+		fcntl(hPorta, F_SETFL, 0);
+	}
+#endif
+	Sleep(2000);
+	return result;
+}
+
+string SerialComm::ler(char* buffer, long unsigned int &bytesParaLer) {
+	int result = EXIT_FAILURE;
+	long unsigned int bytesLidos = 0;
+#if _WIN32 | _WIN64
+	ReadFile(hPorta, buffer, bytesParaLer, &bytesLidos, NULL);
+#endif
+#ifdef __linux__
+	bytesLidos = read(hPorta, (void*) buffer, bytesParaLer);
+#endif
+	if (bytesLidos == bytesParaLer) {
+		result = EXIT_SUCCESS;
+	}
+	return result;
+}
+
+
+
+	string id = "";
+#ifdef SEM_ARDUINO
+	if (controleId) {
+		id = "310047ACD50F";
+	}
+	else
+	{
+		id = "05002ED9986A";
+	}
+	controleId = !controleId;
+	bytesLidos = bytesLer;
+#else
+	bytesLidos = 0;
+	long unsigned int tentativas = 5, bytes = 0;
+	char buffer[32] = { 0 };
+	do {
+#if defined _WIN32 || _WIN64
+		ReadFile(hPorta, buffer, bytesLer, &bytes, NULL);
+#endif
+#ifdef __linux__
+		bytes = read(hPorta, buffer, bytesLer);
+#endif
+		if (bytes > 0) {
+			id = id + string(buffer);
+			bytesLidos += bytes;
+		}
+		tentativas--;
+	} while ((bytesLidos < bytesLer) && (tentativas > 0));
+#endif
+	return id;
+}
+
+void SerialComm::escrever(int comando, long unsigned int &bytesEscritos) {
+	bytesEscritos = 0;
+	char bcomando = (char) comando;
+#ifdef SEM_ARDUINO
+	bytesEscritos = sizeof(bcomando);
+#else
+#if defined _WIN32 || _WIN64
+	WriteFile(hPorta, &bcomando, sizeof(bcomando), &bytesEscritos, NULL);
+#else
+	bytesEscritos = write(hPorta, &bcomando, sizeof(bcomando));
+#endif
+#endif
+}
+
+void SerialComm::escrever(int comando, int parametro,
+		long unsigned int &bytesEscritos) {
+	bytesEscritos = 0;
+	char comandoPar[2];
+	comandoPar[0] = (char) comando;
+	comandoPar[1] = (char) parametro;
+#ifdef SEM_ARDUINO
+	bytesEscritos = sizeof(comandoPar);
+#else
+#if _WIN32 || _WIN64
+	WriteFile(hPorta, &comandoPar, sizeof(comandoPar), &bytesEscritos, NULL);
+#else
+	bytesEscritos = write(hPorta, &comandoPar, sizeof(comandoPar));
+#endif
+#endif
+}
+
+void SerialComm::escrever(int comando, int parametro1, int parametro2,
+		long unsigned int &bytesEscritos) {
+	bytesEscritos = 0;
+	char comandoPars[3];
+	comandoPars[0] = (char) comando;
+	comandoPars[1] = (char) parametro1;
+	comandoPars[2] = (char) parametro2;
+#ifdef SEM_ARDUINO
+	bytesEscritos = sizeof(comandoPars);
+#else
+#if defined _WIN32 || _WIN64
+	WriteFile(hPorta, &comandoPars, sizeof(comandoPars), &bytesEscritos, NULL);
+#else
+	bytesEscritos = write(hPorta, &comandoPars, sizeof(comandoPars));
+#endif
+#endif
+
+}
+
+void SerialComm::finalizar() {
+#ifndef SEM_ARDUINO
+#if _WIN32 || _WIN64
+	CloseHandle(hPorta);
+#endif
+#endif
+}
