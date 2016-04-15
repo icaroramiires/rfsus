@@ -1,7 +1,6 @@
 package br.edu.ifba.rfsus.jna.rfid;
 
 import br.edu.ifba.rfsus.IConsulta;
-import br.edu.ifba.rfsus.ui.Consulta;
 
 public class LeitorRfidConsulta implements Runnable {
 	private IConsulta consulta = null;
@@ -16,11 +15,11 @@ public class LeitorRfidConsulta implements Runnable {
 	@Override
 	public void run() {
 		continuar = true;
-		IRfid rfid = FabricaRfid.getInstancia();
+		IRfid rfid = FabricaRfid.getInstancia(FabricaRfid.MODULO_CONSULTA);
 		rfid.iniciar(porta);
 		while (continuar) {
-			int id = rfid.ler();
-			if(id != 0){
+			int resultado = rfid.ler(); // convencao c/c++ se for zero sucesso
+			if(resultado == 0){
 				consulta.setRfid(rfid.getUid());
 			}
 			try {

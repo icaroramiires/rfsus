@@ -4,14 +4,17 @@ import com.sun.jna.Native;
 import com.sun.jna.Platform;
 
 public class FabricaRfid {
+	
+	public static final String MODULO_ATENDIMENTO = "Recepcao";
+	public static final String MODULO_CONSULTA = "Consulta";
 
-	public static IRfid getInstancia() {
+	public static IRfid getInstancia(String modulo) {
 		IRfid rfid = null;
 
 		if (Platform.isLinux()) {
-			rfid = (IRfid) Native.loadLibrary("comunicacaoConsulta.so", IRfid.class);
+			rfid = (IRfid) Native.loadLibrary("comunicacao" + modulo + ".so", IRfid.class);
 		} else if (Platform.isWindows()) {
-			rfid = (IRfid) Native.loadLibrary("comunicacaoConsulta.dll", IRfid.class);
+			rfid = (IRfid) Native.loadLibrary("comunicacao" + modulo + ".dll", IRfid.class);
 		}
 
 		return rfid;

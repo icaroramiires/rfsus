@@ -1,10 +1,14 @@
 package br.edu.ifba.rfsus.ui;
 
+import javax.swing.DefaultListModel;
+
 import br.edu.ifba.rfsus.IAtendimento;
 import br.edu.ifba.rfsus.bd.FachadaPaciente;
 import br.edu.ifba.rfsus.bean.Paciente;
 
-public class Atendimento extends AtendimentoUI implements IAtendimento {
+@SuppressWarnings("serial")
+// TODO Modificar IdentificacaoUI para AtendimentoUI
+public class Atendimento extends IdentificacaoUI implements IAtendimento {
 
 	@Override
 	public void exibir() {
@@ -14,27 +18,34 @@ public class Atendimento extends AtendimentoUI implements IAtendimento {
 
 	@Override
 	public void setRfid(String rfid) {
+		this.tfIdentificacao.setText(rfid);
+
 		pesquisarPorRfid(rfid);
 	}
-	
+
 	@Override
 	public void pesquisarPorRfid(String rfid) {
-		// TODO Auto-generated method stub
-		System.out.println("Pesquisando pelo RFID...");
-
-		// TODO adicionar pesquisa no banco de dados
 		Paciente paciente = FachadaPaciente.getInstancia().getPacienteById(rfid);
 		this.setDadosPaciente(paciente);
 	}
 
 	@Override
 	public void setDadosPaciente(Paciente paciente) {
-		this.jlblNome.setText(paciente.getNome());
-		this.jlblLeituraTemp.setText("40º");
-		this.jlblLeituraCardiaca.setText("119 bmp");
-		this.jtxtaAvaliacao.setText("Internamento");
+		this.lblRG.setText(paciente.getRg());
+		this.lblNome.setText(paciente.getNome());
+		this.lblDataNasc.setText(paciente.getDataNascimento().toString());
+		DefaultListModel<String> info = new DefaultListModel<>();
+		for(String x : paciente.getObservacoes()){
+			info.addElement(x);
+		}
+		
+		this.jlObservacoes.setModel(info);
 	}
 
+	@Override
+	public void darEntrada() {
+		//jbntDarEntrada.addActionListener(this);
 
+	}
 
 }

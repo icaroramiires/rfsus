@@ -1,19 +1,5 @@
-09:41:33 **** Clean-only build of configuration Debug for project comunicacaoRecepcao ****
-make clean 
-rm -rf  ./src/ComunicacaoRecepcao.o ./src/Extern.o ./src/Test.o  ./src/ComunicacaoRecepcao.d ./src/Extern.d ./src/Test.d  comunicacaoRecepcao
- 
-09:41:33 **** Build of configuration Debug for project comunicacaoRecepcao ****
+15:28:01 **** Incremental Build of configuration Debug for project comunicacaoRecepcao ****
 make all 
-Building file: ../src/ComunicacaoRecepcao.cpp
-Invoking: GCC C++ Compiler
-g++ -I"/home/webmaster/workspace/rfsus/cpp/comunicacaoRecepcao/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ComunicacaoRecepcao.d" -MT"src/ComunicacaoRecepcao.d" -o "src/ComunicacaoRecepcao.o" "../src/ComunicacaoRecepcao.cpp"
-Finished building: ../src/ComunicacaoRecepcao.cpp
- 
-Building file: ../src/Extern.cpp
-Invoking: GCC C++ Compiler
-g++ -I"/home/webmaster/workspace/rfsus/cpp/comunicacaoRecepcao/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Extern.d" -MT"src/Extern.d" -o "src/Extern.o" "../src/Extern.cpp"
-Finished building: ../src/Extern.cpp
- 
 Building file: ../src/Test.cpp
 Invoking: GCC C++ Compiler
 g++ -I"/home/webmaster/workspace/rfsus/cpp/comunicacaoRecepcao/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Test.d" -MT"src/Test.d" -o "src/Test.o" "../src/Test.cpp"
@@ -28,6 +14,6 @@ Invoking: GCC C++ Linker
 g++  -o "comunicacaoRecepcao"  ./src/ComunicacaoRecepcao.o ./src/Extern.o ./src/Test.o   
 Finished building target: comunicacaoRecepcao
  
-09:43:20 **** Incremental Build of configuration Debug for project comunicacaoRecepcao ****
+15:28:07 **** Incremental Build of configuration Debug for project comunicacaoRecepcao ****
 make all 
 make: Nothing to be done for 'all'.

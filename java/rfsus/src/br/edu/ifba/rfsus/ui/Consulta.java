@@ -1,19 +1,11 @@
 package br.edu.ifba.rfsus.ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-
 import br.edu.ifba.rfsus.IConsulta;
 import br.edu.ifba.rfsus.bd.FachadaPaciente;
 import br.edu.ifba.rfsus.bean.Paciente;
-import br.edu.ifba.rfsus.jna.rfid.LeitorRfidAtendimento;
 
-public class Consulta extends ConsultaUI implements IConsulta, ActionListener {
-
-	private static final String PORTA_RFID = "/dev/ttyACM0";
+@SuppressWarnings("serial")
+public class Consulta extends ConsultaUI implements IConsulta {
 	
 	@Override
 	public void exibir() {
@@ -46,21 +38,10 @@ public class Consulta extends ConsultaUI implements IConsulta, ActionListener {
 		this.jlblPeso.setText(paciente.getPeso().toString());
 		
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Atendimento atendimento = new Atendimento();
-		atendimento.exibir();
-		LeitorRfidAtendimento leitorAtendimento = new LeitorRfidAtendimento(PORTA_RFID, atendimento);
-		Thread tLeitorAtendimento = new Thread(leitorAtendimento);
-		tLeitorAtendimento.start();
-		leitorAtendimento.parar();
-		
-	}
 	
 	@Override
 	public void atendimento() {
-		jbtnAtendimento.addActionListener(this);
+		//jbtnAtendimento.addActionListener(this);
 	}
 
 	

@@ -1,29 +1,28 @@
 package br.edu.ifba.rfsus.jna.rfid;
 
 import br.edu.ifba.rfsus.IAtendimento;
-import br.edu.ifba.rfsus.IConsulta;
-import br.edu.ifba.rfsus.ui.Consulta;
 
 public class LeitorRfidAtendimento implements Runnable {
-	private IAtendimento atendimento = null;
+	private IAtendimento identificacao = null;
 	private boolean continuar = true;
 	private String porta = null;
 
-	public LeitorRfidAtendimento(String porta, IAtendimento atendimento) {
+	public LeitorRfidAtendimento(String porta, IAtendimento identificacao) {
 		this.porta = porta;
-		this.atendimento = atendimento;
+		this.identificacao = identificacao;
 	}
 
 	@Override
 	public void run() {
 		continuar = true;
 
-		IRfid rfid = FabricaRfid.getInstancia();
+		IRfid rfid = FabricaRfid.getInstancia(FabricaRfid.MODULO_ATENDIMENTO);
 		rfid.iniciar(porta);
 		while (continuar) {
-			int id = rfid.ler();
-			if(id != 0){
-				atendimento.setRfid(rfid.getUid());
+			int resultado = rfid.ler(); // convenção de c/c++ se for zero é
+										// sucesso
+			if (resultado == 0) {
+				identificacao.setRfid(rfid.getUid());
 			}
 			try {
 				Thread.sleep(500);
@@ -33,7 +32,8 @@ public class LeitorRfidAtendimento implements Runnable {
 		}
 		rfid.finalizar();
 	}
-	public void parar(){
+
+	public void parar() {
 		continuar = false;
 	}
 }

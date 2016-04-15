@@ -3,3 +3,12 @@
 1460314209557	Delete element
 1460314378867	Rename resource 'comunicacaoRecepcao.so'
 1460393358090	Delete element
+1460745195474	Delete element
+1460746297242	Rename type 'Atendimento'
+1460746308144	Rename type 'Identificacao'
+1460746329560	Delete element
+1460746347221	Rename type 'IIdentificacao'
+1460746375910	Rename local variable 'identificacao'
+1460746406229	Delete element
+1460747028261	Rename type 'Executor'
+1460747038325	Copy compilation unit
