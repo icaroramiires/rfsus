@@ -17,6 +17,15 @@ public class Atendimento extends AtendimentoUI implements IAtendimento {
 		pesquisarPorRfid(rfid);
 	}
 	
+	@Override 
+	public void setTemp(int temp) {
+		
+	}
+
+	@Override 
+	public void setBpm(int bpm) {
+		
+	}
 	@Override
 	public void pesquisarPorRfid(String rfid) {
 		// TODO Auto-generated method stub

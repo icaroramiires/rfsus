@@ -1,10 +1,13 @@
 package br.edu.ifba.rfsus.ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import br.edu.ifba.rfsus.IAtendimento;
 import br.edu.ifba.rfsus.bd.FachadaPaciente;
 import br.edu.ifba.rfsus.bean.Paciente;
 
-public class Atendimento extends AtendimentoUI implements IAtendimento {
+public class Atendimento extends AtendimentoUI implements IAtendimento{
 
 	@Override
 	public void exibir() {
@@ -16,7 +19,7 @@ public class Atendimento extends AtendimentoUI implements IAtendimento {
 	public void setRfid(String rfid) {
 		pesquisarPorRfid(rfid);
 	}
-	
+
 	@Override
 	public void pesquisarPorRfid(String rfid) {
 		// TODO Auto-generated method stub

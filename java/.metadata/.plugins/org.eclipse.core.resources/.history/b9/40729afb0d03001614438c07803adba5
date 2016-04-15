@@ -8,6 +8,12 @@ public interface IAtendimento {
 
 	// 2. capturar e exibir o RFID
 	public void setRfid(String rfid);
+	
+	// 2.1. Captura e exibe a temperatura
+	public void setTemp(int temp);
+	
+	// 2.2. Captura e exibe os batimento
+	public void setBpm(int bpm);
 
 	// 3. de posse do RFID, realiza a pesquisa no banco de dados. Deve retornar
 	// um só paciente

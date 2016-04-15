@@ -13,11 +13,6 @@ public class Atendimento extends AtendimentoUI implements IAtendimento {
 	}
 
 	@Override
-	public void setRfid(String rfid) {
-		pesquisarPorRfid(rfid);
-	}
-	
-	@Override
 	public void pesquisarPorRfid(String rfid) {
 		// TODO Auto-generated method stub
 		System.out.println("Pesquisando pelo RFID...");
