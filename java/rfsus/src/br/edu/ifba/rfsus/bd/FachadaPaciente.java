@@ -24,6 +24,7 @@ public class FachadaPaciente {
 	}
 
 	public Paciente getPacienteById(String rfid) {
+		System.out.println("RFID: " + rfid);
 		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");
 
 		DBCollection collection = db.getCollection("paciente");

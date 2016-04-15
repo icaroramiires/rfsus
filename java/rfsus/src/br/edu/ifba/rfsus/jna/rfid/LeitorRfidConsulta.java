@@ -19,9 +19,9 @@ public class LeitorRfidConsulta implements Runnable {
 		IRfid rfid = FabricaRfid.getInstancia();
 		rfid.iniciar(porta);
 		while (continuar) {
-			String id = rfid.ler();
-			if(id != null){
-				consulta.setRfid(id);
+			int id = rfid.ler();
+			if(id != 0){
+				consulta.setRfid(rfid.getUid());
 			}
 			try {
 				Thread.sleep(500);

@@ -21,18 +21,18 @@ void loop(){
   if( rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial() ) {
        
       for(byte i = 0; i < rfid.uid.size; i++) {
-          conteudo.concat(rfid.uid.uidByte[i]);
-          conteudo = conteudo.substring(1,5);
+          uid.concat(rfid.uid.uidByte[i]);
+          uid = uid.substring(1,5);
           
       }   
  
-      char buffer[sizeof(conteudo)] = {0};
-      memcpy(&buffer, &conteudo, sizeof(conteudo));
+      char buffer[sizeof(uid)] = {0};
+      memcpy(&buffer, &uid, sizeof(uid));
 
       Serial.print('I');
-      Serial.print(conteudo);
+      Serial.print(uid);
       Serial.print('F');  
-      conteudo = "";
+      uid = "";
   }
   
   delay(500);

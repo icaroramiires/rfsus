@@ -22,10 +22,10 @@ public class LeitorRfid implements Runnable {
 		rfid.iniciar(porta);
 
 		while (continuar) {
-			String id = rfid.ler();
+			int id = rfid.ler();
 
-			if (id != null) {
-				identificacao.setRfid(id);
+			if (id != 0) {
+				identificacao.setRfid(rfid.getUid());
 			}
 
 			try {

@@ -1,0 +1,13 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+import com.sun.jna.Library;
+
+public interface IRfidAtendimento extends Library {
+	public int _iniciar(String porta);
+
+	public int ler();
+
+	public String getUid();
+	
+	public int finalizar();
+}

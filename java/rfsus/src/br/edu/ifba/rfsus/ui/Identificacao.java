@@ -31,7 +31,7 @@ public class Identificacao extends IdentificacaoUI implements IIdentificacao, Ac
 
 	@Override
 	public void pesquisarPorRfid(String rfid) {
-		System.out.println("Pesquisando pelo RFID...");
+		System.out.println("Pesquisando pelo RFID..." + rfid);
 
 		// TODO adicionar pesquisa no banco de dados
 		Paciente paciente = FachadaPaciente.getInstancia().getPacienteById(rfid);

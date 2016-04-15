@@ -1,0 +1,29 @@
+09:41:25 **** Build of configuration Debug for project comunicacaoConsulta ****
+make all 
+Building file: ../src/ComunicacaoConsulta.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/webmaster/workspace/rfsus/cpp/comunicacaoConsulta/include" -O0 -g3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/ComunicacaoConsulta.d" -MT"src/ComunicacaoConsulta.d" -o "src/ComunicacaoConsulta.o" "../src/ComunicacaoConsulta.cpp"
+Finished building: ../src/ComunicacaoConsulta.cpp
+ 
+Building file: ../src/Extern.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/webmaster/workspace/rfsus/cpp/comunicacaoConsulta/include" -O0 -g3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/Extern.d" -MT"src/Extern.d" -o "src/Extern.o" "../src/Extern.cpp"
+Finished building: ../src/Extern.cpp
+ 
+Building file: ../src/Test.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/webmaster/workspace/rfsus/cpp/comunicacaoConsulta/include" -O0 -g3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/Test.d" -MT"src/Test.d" -o "src/Test.o" "../src/Test.cpp"
+../src/Test.cpp: In function ‘int main(int, char**)’:
+../src/Test.cpp:23:62: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+  ComunicacaoConsulta com = ComunicacaoConsulta("/dev/ttyACM1");
+                                                              ^
+Finished building: ../src/Test.cpp
+ 
+Building target: comunicacaoConsulta
+Invoking: GCC C++ Linker
+g++  -o "comunicacaoConsulta"  ./src/ComunicacaoConsulta.o ./src/Extern.o ./src/Test.o   
+Finished building target: comunicacaoConsulta
+ 
+
+09:41:28 Build Finished (took 2s.318ms)
+

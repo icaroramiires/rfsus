@@ -21,9 +21,9 @@ public class LeitorRfidAtendimento implements Runnable {
 		IRfid rfid = FabricaRfid.getInstancia();
 		rfid.iniciar(porta);
 		while (continuar) {
-			String id = rfid.ler();
-			if(id != null){
-				atendimento.setRfid(id);
+			int id = rfid.ler();
+			if(id != 0){
+				atendimento.setRfid(rfid.getUid());
 			}
 			try {
 				Thread.sleep(500);
