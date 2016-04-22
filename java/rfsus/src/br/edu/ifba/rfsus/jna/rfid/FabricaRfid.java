@@ -12,9 +12,9 @@ public class FabricaRfid {
 		IRfid rfid = null;
 
 		if (Platform.isLinux()) {
-			rfid = (IRfid) Native.loadLibrary("comunicacao" + modulo + ".so", IRfid.class);
+			rfid = (IRfid) Native.loadLibrary("rfid" + ".so", IRfid.class);
 		} else if (Platform.isWindows()) {
-			rfid = (IRfid) Native.loadLibrary("comunicacao" + modulo + ".dll", IRfid.class);
+			rfid = (IRfid) Native.loadLibrary("rfid" + ".dll", IRfid.class);
 		}
 
 		return rfid;

@@ -15,7 +15,7 @@ public class LeitorRfidConsulta implements Runnable {
 	@Override
 	public void run() {
 		continuar = true;
-		IRfid rfid = FabricaRfid.getInstancia(FabricaRfid.MODULO_CONSULTA);
+		IRfid rfid = FabricaRfid.getInstancia(FabricaRfid.MODULO_CONSULTA); // 2 arduinos 
 		rfid.iniciar(porta);
 		while (continuar) {
 			int resultado = rfid.ler(); // convencao c/c++ se for zero sucesso

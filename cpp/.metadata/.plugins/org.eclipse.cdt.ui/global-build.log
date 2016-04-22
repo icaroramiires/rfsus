@@ -1,19 +1,17 @@
-15:28:01 **** Incremental Build of configuration Debug for project comunicacaoRecepcao ****
+15:57:07 **** Build of configuration Release for project rfid ****
 make all 
-Building file: ../src/Test.cpp
+Building file: ../src/Extern.cpp
 Invoking: GCC C++ Compiler
-g++ -I"/home/webmaster/workspace/rfsus/cpp/comunicacaoRecepcao/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Test.d" -MT"src/Test.d" -o "src/Test.o" "../src/Test.cpp"
-../src/Test.cpp: In function ‘int main(int, char**)’:
-../src/Test.cpp:16:40: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
-  ComunicacaoRecepcao com("/dev/ttyACM0");
-                                        ^
-Finished building: ../src/Test.cpp
+g++ -I"/home/webmaster/workspace/rfsus/cpp/rfid/include" -O3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/Extern.d" -MT"src/Extern.d" -o "src/Extern.o" "../src/Extern.cpp"
+Finished building: ../src/Extern.cpp
  
-Building target: comunicacaoRecepcao
+Building file: ../src/Rfid.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/webmaster/workspace/rfsus/cpp/rfid/include" -O3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/Rfid.d" -MT"src/Rfid.d" -o "src/Rfid.o" "../src/Rfid.cpp"
+Finished building: ../src/Rfid.cpp
+ 
+Building target: rfid.so
 Invoking: GCC C++ Linker
-g++  -o "comunicacaoRecepcao"  ./src/ComunicacaoRecepcao.o ./src/Extern.o ./src/Test.o   
-Finished building target: comunicacaoRecepcao
+g++ -shared -o "rfid.so"  ./src/Extern.o ./src/Rfid.o   
+Finished building target: rfid.so
  
-15:28:07 **** Incremental Build of configuration Debug for project comunicacaoRecepcao ****
-make all 
-make: Nothing to be done for 'all'.

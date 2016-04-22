@@ -8,7 +8,7 @@ import br.edu.ifba.rfsus.ui.Consulta;
 
 public class ExecutorConsulta {
 
-	private static final String PORTA_RFID = "/dev/ttyACM0";
+	private static final String PORTA_RFID = "/dev/ttyACM1";
 
 	public static void main(String[] args) throws InterruptedException {
 		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "root");

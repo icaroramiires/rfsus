@@ -7,13 +7,11 @@
 int potenciomentro = 2;
 
 struct Dados { 
-  char uid[4]; // UID TAG RFID
   int temp = 0; // TEMPERATURA
   int bpm = 0; // TEMPERATURA
 };
 
 Dados dados;  
-String conteudoTag = ""; // ARMAZENA VALOR DA TAG RFID
 
 MFRC522 rfid(SS_PIN, RST_PIN); // istancia o leitor rfid 
 
@@ -23,21 +21,8 @@ void setup() {
   rfid.PCD_Init();
 }
 
-void loop(){
-
-  if( rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial() ) {
-       
-      for(byte i = 0; i < rfid.uid.size; i++) { 
-         conteudoTag.concat(rfid.uid.uidByte[i]);
-         conteudoTag = conteudoTag.substring(1,5);
-       }   
-       
-       // INSERE OS DADOS DA STRING EM DADOS.UID 
-       for(int i = 0; i < conteudoTag.length(); i++) {
-         dados.uid[i] = conteudoTag[i];
-       }
-      
-      // DADOS POTENCIOMENTRO    
+void loop(){    
+  // DADOS POTENCIOMENTRO    
       int temp = analogRead(potenciomentro);
       int bpm = analogRead(potenciomentro);
       dados.temp = map(temp, 0, 1023, 0,48);
@@ -46,10 +31,11 @@ void loop(){
       int tamanho = sizeof(dados);
       char buffer[tamanho];
       memcpy(&buffer, &dados, tamanho);
-      
+      // escrevendo na porta serial
       Serial.write('I');
       Serial.write((uint8_t*) &buffer, tamanho);
       Serial.write('F');
-    }
-  delay(500);
+      
+      // intervalo
+      delay(1000);
 }

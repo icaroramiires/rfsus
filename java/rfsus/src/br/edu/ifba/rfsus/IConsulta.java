@@ -10,7 +10,9 @@ public interface IConsulta {
 
 	// 2. capturar e exibir o RFID
 	public void setRfid(String rfid);
-
+	/*
+	 *  isenrir interface de sensores	
+	 */
 	// 3. de posse do RFID, realiza a pesquisa no banco de dados. Deve retornar
 	// um soh paciente
 	public void pesquisarPorRfid(String rfid);

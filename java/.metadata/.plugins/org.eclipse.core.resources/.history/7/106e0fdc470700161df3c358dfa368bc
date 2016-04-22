@@ -1,0 +1,37 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+import br.edu.ifba.rfsus.IConsulta;
+
+public class LeitorRfidConsulta implements Runnable {
+	private IConsulta consulta = null;
+	private boolean continuar = false;
+	private String porta = null;
+	
+	public LeitorRfidConsulta(String porta, IConsulta consulta) {
+		this.porta = porta;
+		this.consulta = consulta;
+	}
+
+	@Override
+	public void run() {
+		continuar = true;
+		IRfid rfid = FabricaRfid.getInstancia(FabricaRfid.MODULO_CONSULTA); // 2 leitor - 1 em cada porta
+		rfid.iniciar(porta);
+		while (continuar) {
+			int resultado = rfid.ler(); // convencao c/c++ se for zero sucesso
+			if(resultado == 0){
+				consulta.setRfid(rfid.getUid());
+			}
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		rfid.finalizar();
+	}
+
+	public void parar(){
+		continuar = false;
+	}
+}

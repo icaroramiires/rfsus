@@ -12,6 +12,8 @@ public interface IRfidConsulta extends Library {
 	public int getTemp();
 	
 	public int getBmp();
+	
+	// pressão arterial 
 
 	public int finalizar();
 }

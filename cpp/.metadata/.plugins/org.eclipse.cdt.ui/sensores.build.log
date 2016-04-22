@@ -1,0 +1,20 @@
+15:57:01 **** Build of configuration Release for project sensores ****
+make all 
+Building file: ../src/Extern.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/webmaster/workspace/rfsus/cpp/sensores/include" -O3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/Extern.d" -MT"src/Extern.d" -o "src/Extern.o" "../src/Extern.cpp"
+Finished building: ../src/Extern.cpp
+ 
+Building file: ../src/Sensores.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/webmaster/workspace/rfsus/cpp/sensores/include" -O3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/Sensores.d" -MT"src/Sensores.d" -o "src/Sensores.o" "../src/Sensores.cpp"
+Finished building: ../src/Sensores.cpp
+ 
+Building target: sensores.so
+Invoking: GCC C++ Linker
+g++ -shared -o "sensores.so"  ./src/Extern.o ./src/Sensores.o   
+Finished building target: sensores.so
+ 
+
+15:57:03 Build Finished (took 1s.717ms)
+

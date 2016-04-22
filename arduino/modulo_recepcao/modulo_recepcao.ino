@@ -19,11 +19,9 @@ void setup() {
 void loop(){
 
   if( rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial() ) {
-       
       for(byte i = 0; i < rfid.uid.size; i++) {
-          uid.concat(rfid.uid.uidByte[i]);
-          uid = uid.substring(1,5);
-          
+        uid.concat(rfid.uid.uidByte[i]);
+        uid = uid.substring(0,8);
       }   
  
       char buffer[sizeof(uid)] = {0};
