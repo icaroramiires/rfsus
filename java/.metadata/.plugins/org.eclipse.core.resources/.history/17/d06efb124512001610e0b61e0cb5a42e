@@ -1,0 +1,7 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+import br.edu.ifba.rfsus.IConsulta;
+
+public class LeitorSensoresConsulta {
+	private IConsulta
+}

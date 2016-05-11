@@ -9,8 +9,10 @@
 #include <Sensores.h>
 
 struct Dados {
-	short temp;
-	short bmp;
+	short temp; 	// 2 bytes
+	short bmp;		// 2 bytes
+	short pressaoS;	// 2 bytes
+	short pressaoD;	// 2 bytes
 } dados;
 
 char ci, cf;
@@ -42,6 +44,14 @@ int getTemp() {
 
 int getBpm() {
 	return dados.bmp;
+}
+
+int getPressaoS() {
+	return dados.pressaoS;
+}
+
+int getPressaoD() {
+	return dados.pressaoD;
 }
 
 int finalizar() {

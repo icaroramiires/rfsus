@@ -1,0 +1,36 @@
+package br.edu.ifba.rfsus.ui;
+
+import br.edu.ifba.rfsus.ILerSensores;
+
+public class Leitura extends LeituraUI implements ILerSensores{
+
+	@Override
+	public void exibir() {
+		pack();
+		setVisible(true);
+	}
+
+	@Override
+	public void setTemp(int temp) {
+		this.jlblLeituraTemp.setText(temp+"");
+		
+	}
+
+	@Override
+	public void setBpm(int bpm) {
+		this.jlblLeituraCardiaca.setText(bpm + "");
+	}
+
+	@Override
+	public void setPressaoS(int pressaoS) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPressaoD(int pressaoD) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

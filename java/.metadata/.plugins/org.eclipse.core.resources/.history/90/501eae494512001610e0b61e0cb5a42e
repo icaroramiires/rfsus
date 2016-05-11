@@ -1,0 +1,15 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+import br.edu.ifba.rfsus.IConsulta;
+
+public class LeitorSensoresConsulta {
+	private IConsulta consulta = null;
+	private boolean continuar = false;
+	private String porta = null;
+	
+	public LeitorSensoresConsulta(String porta, IConsulta consulta) {
+		this.porta = porta;
+		this.consulta = consulta;
+	}
+	
+}

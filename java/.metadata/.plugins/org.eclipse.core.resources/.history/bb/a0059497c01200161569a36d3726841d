@@ -1,0 +1,7 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+public class FabricaSensores {
+	public	static ISensores getInstancia(){
+		ISensores sensores = null;
+	} 
+}

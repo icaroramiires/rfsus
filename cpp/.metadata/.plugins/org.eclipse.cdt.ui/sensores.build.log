@@ -1,4 +1,4 @@
-15:57:01 **** Build of configuration Release for project sensores ****
+10:06:22 **** Build of configuration Release for project sensores ****
 make all 
 Building file: ../src/Extern.cpp
 Invoking: GCC C++ Compiler
@@ -16,5 +16,5 @@ g++ -shared -o "sensores.so"  ./src/Extern.o ./src/Sensores.o
 Finished building target: sensores.so
  
 
-15:57:03 Build Finished (took 1s.717ms)
+10:06:23 Build Finished (took 873ms)
 

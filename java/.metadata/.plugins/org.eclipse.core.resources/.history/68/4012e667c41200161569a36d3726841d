@@ -1,0 +1,7 @@
+package br.edu.ifba.rfsus.ui;
+
+import br.edu.ifba.rfsus.ILeitura;
+
+public class Leitura extends LeituraUI implements ILeitura{
+
+}

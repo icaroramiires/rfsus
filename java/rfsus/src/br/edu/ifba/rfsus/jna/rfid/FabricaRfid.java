@@ -4,11 +4,7 @@ import com.sun.jna.Native;
 import com.sun.jna.Platform;
 
 public class FabricaRfid {
-	
-	public static final String MODULO_ATENDIMENTO = "Recepcao";
-	public static final String MODULO_CONSULTA = "Consulta";
-
-	public static IRfid getInstancia(String modulo) {
+	public static IRfid getInstancia() {
 		IRfid rfid = null;
 
 		if (Platform.isLinux()) {

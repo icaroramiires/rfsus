@@ -1,0 +1,5 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+public class LeituraSensoresConsulta {
+
+}

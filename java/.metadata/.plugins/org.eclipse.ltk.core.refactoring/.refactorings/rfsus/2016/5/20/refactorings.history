@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;rfsus/sensores.so&apos; to &apos;sensores_.so&apos;" description="Rename resource &apos;sensores.so&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="sensores.so" name="sensores_.so" stamp="1462972111039" updateReferences="true"/>
+</session>

@@ -1,0 +1,17 @@
+package br.edu.ifba.rfsus;
+
+import br.edu.ifba.rfsus.bd.FachadaBD;
+import br.edu.ifba.rfsus.jna.rfid.LeitorRfidConsulta;
+import br.edu.ifba.rfsus.ui.Consulta;
+
+public class ExecutorSensores {
+	private static final String porta_RFID = "/dev/ttyACM0";
+	private static final String porta_SENSORES = "/dev/ttyUSB0";
+	
+	public static void main(String[] args) {
+		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "root");
+		
+		IConsulta consulta = new Consulta();
+		LeitorRfidConsulta leitorRFID = new LeitorRfidConsulta(porta_RFID, consulta);
+	}
+}

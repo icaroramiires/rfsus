@@ -1,0 +1,27 @@
+package br.edu.ifba.rfsus;
+
+import br.edu.ifba.rfsus.bd.FachadaBD;
+import br.edu.ifba.rfsus.jna.rfid.LeitorRfidAtendimento;
+import br.edu.ifba.rfsus.jna.rfid.LeitorRfidConsulta;
+import br.edu.ifba.rfsus.ui.Atendimento;
+import br.edu.ifba.rfsus.ui.Consulta;
+import br.edu.ifba.rfsus.ui.Leitura;
+
+public class ExecutorLerSensores {
+
+	private static final String PORTA_RFID = "/dev/ttyUSB0";
+
+	public static void main(String[] args) throws InterruptedException {
+		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "root");
+
+		ILerSensores lerSensores = new Leitura();
+
+		LeitorRfidConsulta leitor = new LeitorRfidConsulta(PORTA_RFID, lerSensores);
+		Thread tLeitor = new Thread(leitor);
+		tLeitor.start();
+		
+		consulta.exibir();
+				
+	}
+
+}

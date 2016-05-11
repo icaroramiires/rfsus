@@ -1,0 +1,19 @@
+package br.edu.ifba.rfsus.ui;
+
+import br.edu.ifba.rfsus.ILerSensores;
+
+public class LeitorSensoresConsulta implements Runnable {
+	private ILerSensores lerSensores = null;
+	private boolean continuar = false;
+	private String porta = null;
+	
+	public LeitorSensores() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.sun.jna.Platform"/>
-<fullyQualifiedTypeName name="com.sun.jna.Native"/>
 <fullyQualifiedTypeName name="java.lang.InstantiationError"/>
 <fullyQualifiedTypeName name="com.mongodb.ServerAddress"/>
 <fullyQualifiedTypeName name="com.mongodb.MongoCredential"/>
 <fullyQualifiedTypeName name="com.mongodb.MongoClient"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="com.mongodb.client.MongoDatabase"/>
-<fullyQualifiedTypeName name="br.edu.ifba.rfsus.bd.FachadaBD"/>
 <fullyQualifiedTypeName name="com.mongodb.DBCollection"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.bd.FachadaPaciente"/>
 <fullyQualifiedTypeName name="com.mongodb.DBObject"/>
@@ -17,19 +14,30 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="com.mongodb.DBCursor"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.ConsultaUI"/>
-<fullyQualifiedTypeName name="com.sun.jna.Library"/>
-<fullyQualifiedTypeName name="java.lang.Runnable"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.IRfid"/>
-<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.FabricaRfid"/>
-<fullyQualifiedTypeName name="java.lang.InterruptedException"/>
-<fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.Consulta"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.IIdentificacao"/>
-<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.LeitorRfidConsulta"/>
-<fullyQualifiedTypeName name="br.edu.ifba.rfsus.IConsulta"/>
-<fullyQualifiedTypeName name="java.lang.Thread"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.swing.JList"/>
 <fullyQualifiedTypeName name="javax.swing.DefaultListModel"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.bd.FachadaBD"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.IConsulta"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.Consulta"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.LeitorRfidConsulta"/>
+<fullyQualifiedTypeName name="com.sun.jna.Library"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.ILerSensores"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.LeitorSensoresConsulta"/>
+<fullyQualifiedTypeName name="com.sun.jna.Native"/>
+<fullyQualifiedTypeName name="com.sun.jna.Platform"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.FabricaRfid"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.sensores.ISensores"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.sensores.FabricaSensores"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="java.lang.InterruptedException"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.LeituraUI"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.ILeitura"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.Leitura"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.sensores.LeituraSensoresConsulta"/>
 </qualifiedTypeNameHistroy>

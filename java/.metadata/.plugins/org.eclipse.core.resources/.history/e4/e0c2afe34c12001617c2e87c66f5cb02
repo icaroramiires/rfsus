@@ -1,0 +1,49 @@
+package br.edu.ifba.rfsus.ui;
+
+import br.edu.ifba.rfsus.jna.sensores.ISensores;
+
+public class LeituraSensores extends LeituraUI implements ISensores{
+
+	@Override
+	public int inicia(String porta) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int ler() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getTemp() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getBmp() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getPressaoS() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getPressaoD() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int finalizar() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

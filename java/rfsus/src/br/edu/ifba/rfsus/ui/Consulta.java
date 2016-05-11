@@ -42,7 +42,5 @@ public class Consulta extends ConsultaUI implements IConsulta {
 	@Override
 	public void atendimento() {
 		//jbtnAtendimento.addActionListener(this);
-	}
-
-	
+	}	
 }

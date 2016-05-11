@@ -1,0 +1,10 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+public class FabricaSensores {
+	public static final String MODULO_ATENDIMENTO = "Recepcao";
+	public static final String MODULO_CONSULTA = "Consulta";
+	
+	Public static ISensores getInstancia() {
+		
+	}
+}

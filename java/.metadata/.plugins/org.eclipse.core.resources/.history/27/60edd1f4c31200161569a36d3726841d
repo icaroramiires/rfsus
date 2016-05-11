@@ -1,0 +1,28 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+import br.edu.ifba.rfsus.ILeitura;
+
+public class LeituraSensoresConsulta implements Runnable {
+	private ILeitura sensores = null;
+	private boolean continuar = false;
+	private String porta = null;
+
+	public LeituraSensoresConsulta(String porta, ILeitura sensores) {
+		this.porta = porta;
+		this.sensores = sensores;
+	}
+
+	@Override
+	public void run() {
+		continuar = true;
+		ISensores dadosSensores = FabricaSensores.getInstancia();
+		dadosSensores.iniciar(porta);
+		while (continuar) {
+			int resultado = dadosSensores.ler();
+			if (resultado == 0) {
+				
+			}
+		}
+	}
+
+}

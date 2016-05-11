@@ -1,0 +1,41 @@
+package br.edu.ifba.rfsus.ui;
+
+import br.edu.ifba.rfsus.ILeitura;
+
+public class Leitura extends LeituraUI implements ILeitura{
+
+	@Override
+	public void exibir() {
+		pack();
+		setVisible(true);
+	}
+
+	@Override
+	public void setNome(String nome) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void setTemp(int temp) {
+		this.jlblLeituraTemp.setText(temp+"");
+	}
+
+	@Override
+	public void setBpm(int bpm) {
+		this.jlblLeituraCardiaca.setText(bpm+"");
+	}
+
+	@Override
+	public void setPressaoS(int pressaoS) {
+		this.jlblPressaoS.setText(pressaoS+"");
+	}
+
+	@Override
+	public void setPressaoD(int pressaoD) {
+		this.jlblPressaoD.setText(pressaoD+"");
+	}
+	
+	public void iniciarleitura() {
+		btnLeitura.addActionListener();
+	}
+}

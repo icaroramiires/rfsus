@@ -16,6 +16,8 @@ int iniciar(char* porta);
 int ler();
 int getTemp();
 int getBpm();
+int getPressaoS();
+int getPressaoD();
 int finalizar();
 #ifdef __cplusplus
 }

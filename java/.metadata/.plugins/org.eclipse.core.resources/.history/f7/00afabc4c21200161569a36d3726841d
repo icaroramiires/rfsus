@@ -1,0 +1,18 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+public class LeituraSensoresConsulta implements Runnable{
+	private ISensores sensores = null;
+	private boolean continuar = false;
+	private String porta = null;
+	
+	public LeituraSensoresConsulta(String porta, ISensores sensores) {
+		this.porta = porta;
+		this.sensores = sensores;
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

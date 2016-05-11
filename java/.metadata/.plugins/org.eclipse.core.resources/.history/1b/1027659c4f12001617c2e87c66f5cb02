@@ -1,0 +1,7 @@
+package br.edu.ifba.rfsus.ui;
+
+import br.edu.ifba.rfsus.ILerSensores;
+
+public class Leitura extends LeituraUI implements ILerSensores{
+
+}

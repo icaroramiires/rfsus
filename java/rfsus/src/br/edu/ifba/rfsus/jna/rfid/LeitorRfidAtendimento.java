@@ -16,7 +16,7 @@ public class LeitorRfidAtendimento implements Runnable {
 	public void run() {
 		continuar = true;
 
-		IRfid rfid = FabricaRfid.getInstancia(FabricaRfid.MODULO_ATENDIMENTO);
+		IRfid rfid = FabricaRfid.getInstancia();
 		rfid.iniciar(porta);
 		while (continuar) {
 			int resultado = rfid.ler(); // convenção de c/c++ se for zero é

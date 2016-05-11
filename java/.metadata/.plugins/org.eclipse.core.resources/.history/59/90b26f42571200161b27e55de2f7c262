@@ -1,0 +1,23 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+import com.sun.jna.Native;
+import com.sun.jna.Platform;
+
+public class FabricaSensores {
+	
+	public static final String MODULO_ATENDIMENTO = "Recepcao";
+	public static final String MODULO_CONSULTA = "Consulta";
+
+	public static ISensores getInstancia(String modulo) {
+		ISensores sensores = null;
+
+		if (Platform.isLinux()) {
+			sensores = (ISensores) Native.loadLibrary("rfid" + ".so", ISensores.class);
+		} else if (Platform.isWindows()) {
+			sensores = (ISensores) Native.loadLibrary("rfid" + ".dll", I.class);
+		}
+
+		return sensores;
+	}
+
+}

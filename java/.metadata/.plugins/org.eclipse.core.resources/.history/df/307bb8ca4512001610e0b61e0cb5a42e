@@ -1,0 +1,35 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+import br.edu.ifba.rfsus.IConsulta;
+
+public class LeitorSensoresConsulta implements Runnable {
+	private IConsulta consulta = null;
+	private boolean continuar = false;
+	private String porta = null;
+
+	public LeitorSensoresConsulta(String porta, IConsulta consulta) {
+		this.porta = porta;
+		this.consulta = consulta;
+	}
+
+	@Override
+	public void run() {
+		continuar = true;
+		ISensores sensores = FabricaSensores.getInstancia(FabricaSensores.MODULO_CONSULTA);
+		sensores.inicia(porta);
+		while (continuar) {
+			int resultado = sensores.ler();
+			if (resultado == 0) {
+				consulta.setSensores(sensores.getTemp(), sensores.getBmp(), sensores.getPressaoS(),
+						sensores.getPressaoD());
+			}
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		sensores.finalizar();
+	}
+
+}

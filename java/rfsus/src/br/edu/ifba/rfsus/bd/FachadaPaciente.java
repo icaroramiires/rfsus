@@ -14,6 +14,7 @@ public class FachadaPaciente {
 	private static FachadaPaciente instancia = null;
 
 	private FachadaPaciente() {
+		
 	}
 
 	public static FachadaPaciente getInstancia() {

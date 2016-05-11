@@ -1,0 +1,11 @@
+package br.edu.ifba.rfsus;
+
+public interface ILerSensores {
+	// 1. Exibe a interface grafica
+	public void exibir();
+	
+	// 2. Captura dados dos sensores
+	public void setTemp(int temp);
+	public void setBpm(int bpm);
+	public void
+}

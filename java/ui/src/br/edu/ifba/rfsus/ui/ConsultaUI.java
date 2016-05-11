@@ -44,8 +44,7 @@ public class ConsultaUI extends javax.swing.JFrame {
         jlblAltura = new javax.swing.JLabel();
         jlblPeso = new javax.swing.JLabel();
         jbtnHistorico = new javax.swing.JButton();
-        jbtnAtendimento = new javax.swing.JButton();
-        jbtnAtualizar = new javax.swing.JButton();
+        jbtnLeitura = new javax.swing.JButton();
         jbtnFechar = new javax.swing.JButton();
         jlblNome = new javax.swing.JLabel();
 
@@ -81,9 +80,7 @@ public class ConsultaUI extends javax.swing.JFrame {
 
         jbtnHistorico.setText("Histórico");
 
-        jbtnAtendimento.setText("Atendimento");
-
-        jbtnAtualizar.setText("Atualizar");
+        jbtnLeitura.setText("Leitura");
 
         jbtnFechar.setText("Fechar");
 
@@ -99,6 +96,14 @@ public class ConsultaUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                                .addComponent(jbtnHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbtnLeitura, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbtnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -126,16 +131,7 @@ public class ConsultaUI extends javax.swing.JFrame {
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jlblPeso)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(jbtnHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbtnAtendimento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbtnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbtnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(112, 112, 112)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -181,8 +177,7 @@ public class ConsultaUI extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnHistorico)
-                    .addComponent(jbtnAtendimento)
-                    .addComponent(jbtnAtualizar)
+                    .addComponent(jbtnLeitura)
                     .addComponent(jbtnFechar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -258,10 +253,9 @@ public class ConsultaUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
-    protected javax.swing.JButton jbtnAtendimento;
-    protected javax.swing.JButton jbtnAtualizar;
     protected javax.swing.JButton jbtnFechar;
     protected javax.swing.JButton jbtnHistorico;
+    protected javax.swing.JButton jbtnLeitura;
     protected javax.swing.JComboBox<String> jcbxTipoSanguineo;
     protected javax.swing.JLabel jlblAltura;
     protected javax.swing.JLabel jlblDataNasc;

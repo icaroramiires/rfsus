@@ -1,25 +1,26 @@
 package br.edu.ifba.rfsus;
 
 import br.edu.ifba.rfsus.bd.FachadaBD;
-import br.edu.ifba.rfsus.jna.rfid.LeitorRfidAtendimento;
 import br.edu.ifba.rfsus.jna.rfid.LeitorRfidConsulta;
-import br.edu.ifba.rfsus.ui.Atendimento;
+
 import br.edu.ifba.rfsus.ui.Consulta;
 
 public class ExecutorConsulta {
 
-	private static final String PORTA_RFID = "/dev/ttyACM1";
+	private static final String PORTA_RFID = "/dev/ttyACM0";
 
 	public static void main(String[] args) throws InterruptedException {
 		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "root");
 
 		IConsulta consulta = new Consulta();
-
+		
 		LeitorRfidConsulta leitor = new LeitorRfidConsulta(PORTA_RFID, consulta);
 		Thread tLeitor = new Thread(leitor);
 		tLeitor.start();
 		
 		consulta.exibir();
+		
+		
 				
 	}
 

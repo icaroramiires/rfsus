@@ -13,16 +13,19 @@
 using namespace std;
 
 struct Dados {
-	short temp;		 //  2 bytes
-	short bpm;		// 	 2 bytes
+	short temp;		 	//  2 bytes
+	short bpm;			// 	2 bytes
+	short pressaoS; 	//	2 bytes
+	short pressaoD;		//	2 bytes
 };
 
 
 int main(int argc, char **argv) {
-	ComunicacaoConsulta com = ComunicacaoConsulta("/dev/ttyACM1");
+	ComunicacaoConsulta com = ComunicacaoConsulta("/dev/ttyUSB0");
 	if (com.iniciar() == EXIT_SUCCESS) {
 		char ci, cf;
 		Dados dadosp;
+		cout << sizeof(dadosp);
 		while (true) {
 			int resultado = com.ler((char*) &ci, sizeof(ci));
 
@@ -35,10 +38,12 @@ int main(int argc, char **argv) {
 					if((resultado == EXIT_SUCCESS) && (cf == 'F')) {
 						cout << "temp: " << dadosp.temp << endl;
 						cout << "bpm: " << dadosp.bpm << endl;
+						cout << "Pressão S" << dadosp.pressaoS << endl;
+						cout << "Pressão D" << dadosp.pressaoD << endl;
 					}
 				}
 			}
-			Sleep(1000);
+			Sleep(20);
 		}
 	}
 	return EXIT_SUCCESS;

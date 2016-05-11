@@ -1,0 +1,12 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+import com.sun.jna.Library;
+
+public interface ISensoresConsulta extends Library{
+	
+	public int iniciar(String porta);
+	public int getTemp();
+	public int getBpm();
+	public int getPressaoS();
+	public int getPressaoD();
+}

@@ -1,0 +1,10 @@
+package br.edu.ifba.rfsus;
+
+public class ExecutorSensores {
+	private static final String porta_RFID = "/dev/ttyACM0";
+	private static final String porta_SENSORES = "/dev/ttyUSB0";
+	
+	public static void main(String argsv, int argsc) {
+		
+	}
+}
