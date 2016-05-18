@@ -7,6 +7,8 @@ import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoDatabase;
 
+/* Esta classe é responsavel por gerar uma instancia de conexão com banco de dados no decorrer do software */ 
+
 public class FachadaBD {
 	private static FachadaBD instancia = null;
 
@@ -16,8 +18,7 @@ public class FachadaBD {
 	private String user;
 	private String password;
 
-	private FachadaBD() {
-	}
+	private FachadaBD() {} // Construtor 
 
 	public static FachadaBD getInstancia() {
 		if (instancia == null) {

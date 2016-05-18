@@ -3,6 +3,8 @@ package br.edu.ifba.rfsus.bean;
 import java.util.ArrayList;
 import java.util.Date;
 
+/* Esta classe representa a entidade Paciente definida no banco de dados */
+
 public class Paciente {
 	private String rfid;
 	private String rg;

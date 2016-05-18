@@ -1,0 +1,31 @@
+package br.edu.ifba.rfsus;
+
+import br.edu.ifba.rfsus.bd.FachadaBD;
+import br.edu.ifba.rfsus.jna.rfid.LeitorRfidAtendimento;
+import br.edu.ifba.rfsus.jna.rfid.LeitorRfidHistorico;
+import br.edu.ifba.rfsus.jna.sensores.LeituraSensoresConsulta;
+import br.edu.ifba.rfsus.ui.Historico;
+import br.edu.ifba.rfsus.ui.Consulta;
+
+/* Classe Responsavel por exibir a tela de leitura dos dados dos sensores */
+
+public class ExecutorConsulta {
+	private static final String PORTA_RFID = "/dev/ttyUSB0";
+	private static final String PORTA_SENSORES = "/dev/ttyUSB1";
+
+	public static void main(String[] args) throws InterruptedException {
+		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "root");
+		
+		IConsulta consulta = new Consulta();
+		
+		LeitorRfidAtendimento leitor = new LeitorRfidAtendimento(PORTA_RFID, consulta);
+		Thread tLeitorAtendimento = new Thread(leitor);
+		tLeitorAtendimento.start();
+		leitor.
+		LeituraSensoresConsulta leitorSensores = new LeituraSensoresConsulta(PORTA_SENSORES, consulta);
+		Thread tLeitorSensores = new Thread(leitorSensores);
+		tLeitorSensores.start();
+		
+		consulta.exibir();
+	}
+}

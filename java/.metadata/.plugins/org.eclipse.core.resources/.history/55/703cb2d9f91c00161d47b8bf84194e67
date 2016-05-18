@@ -1,0 +1,6 @@
+package br.edu.ifba.rfsus.bean;
+
+public class Sensores {
+	// get e sets para cada sensor 
+	
+}

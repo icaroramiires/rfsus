@@ -1,0 +1,12 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+import com.sun.jna.Library;
+
+/* Esta classe descreve as definição dos metodos para leitura dos dados RFID */
+public interface IRfidAtendimento extends Library {
+	public int _iniciar(String porta);
+
+	public String ler();
+
+	public int finalizar();
+}

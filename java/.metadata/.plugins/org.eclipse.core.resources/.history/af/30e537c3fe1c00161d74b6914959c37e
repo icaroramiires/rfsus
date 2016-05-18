@@ -1,0 +1,34 @@
+package br.edu.ifba.rfsus.ui;
+
+import br.edu.ifba.rfsus.IConsulta;
+import br.edu.ifba.rfsus.bd.FachadaPaciente;
+import br.edu.ifba.rfsus.bean.Paciente;
+import br.edu.ifba.rfsus.bean.Sensores;
+
+// TODO mudar de Leitura Para consulta
+public class Consulta extends LeituraUI implements IConsulta {
+
+	@Override
+	public void setRfid(String rfid) {
+		pesquisarPorRfid(rfid);
+	}
+
+	@Override
+	public void pesquisarPorRfid(String rfid) {
+		Paciente paciente = FachadaPaciente.getInstancia().getPacienteById(rfid);
+		this.setDadosPaciente(paciente);
+	}
+
+	@Override
+	public void setDadosPaciente(Paciente paciente) {
+		this.jlblNome.setText(paciente.getNome());
+	}
+
+	@Override
+	public void setSensores(Sensores sensores) {
+		this.jlblLeituraCardiaca.setText(sensores.getBpm()+"");
+		this.jlblLeituraTemp.setText(sensores.getTemp()+"");
+		this.jlblPressaoS.setText(sensores.getPressaoS()+"");
+		this.jlblPressaoD.setText(sensores.getPressaoD()+"");
+	}
+}

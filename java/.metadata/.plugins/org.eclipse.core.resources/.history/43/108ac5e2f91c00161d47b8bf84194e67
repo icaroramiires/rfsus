@@ -1,0 +1,8 @@
+package br.edu.ifba.rfsus.bean;
+
+public class Sensores {
+	private int bpm;
+	private int temp;
+	private int pressaoS;
+	private int pressaoD;
+}

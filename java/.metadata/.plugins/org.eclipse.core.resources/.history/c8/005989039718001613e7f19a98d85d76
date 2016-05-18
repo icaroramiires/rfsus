@@ -1,0 +1,40 @@
+package br.edu.ifba.rfsus.jna.rfid;
+
+import br.edu.ifba.rfsus.IAtendimento;
+
+/* Esta Classe é responsavel por realizar a leitura dos sensores de batimento cardiaco, temperatura e pressão arterial */ 
+public class LeitorRfidAtendimento implements Runnable {
+	private IAtendimento identificacao = null;
+	private boolean continuar = true;
+	private String porta = null;
+
+	public LeitorRfidAtendimento(String porta, IAtendimento identificacao) {
+		this.porta = porta;
+		this.identificacao = identificacao;
+	}
+
+	@Override
+	public void run() {
+		continuar = true;
+
+		IRfid rfid = FabricaRfid.getInstancia();
+		rfid.iniciar(porta);
+		while (continuar) {
+			int resultado = rfid.ler(); // convenção de c/c++ se for zero é sucesso
+			
+			if (resultado == 0) {
+				identificacao.setRfid(rfid.getUid());
+			}
+			try {
+				Thread.sleep(500);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		rfid.finalizar();
+	}
+
+	public void parar() {
+		continuar = false;
+	}
+}

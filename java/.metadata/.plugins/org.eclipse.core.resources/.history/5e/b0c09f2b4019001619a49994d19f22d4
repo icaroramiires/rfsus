@@ -1,0 +1,13 @@
+package br.edu.ifba.rfsus;
+
+/* Esta interface define os metodos de que compõe a interface grafica Leitura */
+
+public interface IConsulta extends IAtendimento {
+	public void exibir();
+	public void setNome(String nome);
+	public void setTemp(int temp);
+	public void setBpm(int bpm);
+	public void setPressaoS(int pressaoS);
+	public void setPressaoD(int pressaoD);
+	
+}

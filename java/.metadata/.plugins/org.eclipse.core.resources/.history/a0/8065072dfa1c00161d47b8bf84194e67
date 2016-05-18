@@ -1,0 +1,43 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+import br.edu.ifba.rfsus.IConsulta;
+
+/* Esta Classe é responsavel por realizar a leitura dos sensores de batimento, temperatura e batimentos no modulo de consulta */ 
+
+public class LeituraSensoresConsulta implements Runnable {
+	private IConsulta consulta = null;
+	private boolean continuar = false;
+	private String porta = null;
+
+	public LeituraSensoresConsulta(String porta, IConsulta consulta) {
+		this.porta = porta;
+		this.consulta = consulta;
+	}
+
+	@Override
+	public void run() {
+		continuar = true;
+		ISensores dadosSensores = FabricaSensores.getInstancia();
+		dadosSensores.iniciar(porta);
+		while (continuar) {
+			int resultado = dadosSensores.ler();
+			if (resultado == 0) {	
+				// criar uma instancia de Sensores  e setar aqui 
+				// consulta.setSensores(Sensores);
+				consulta.setTemp(dadosSensores.getTemp());
+				consulta.setBpm(dadosSensores.getBpm());
+				consulta.setPressaoS(dadosSensores.getPressaoS());
+				consulta.setPressaoD(dadosSensores.getPressaoD());
+			}
+			try {
+				Thread.sleep(20);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		dadosSensores.finalizar();
+	}
+	public void parar() {
+		continuar = false;
+	}
+}

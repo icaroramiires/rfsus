@@ -18,7 +18,4 @@ public interface IAtendimento {
 
 	// 4. apos retorna o paciente, deve exibir os dados dele para conferencia
 	public void setDadosPaciente(Paciente paciente);
-
-	// 5. dar entrada do paciente para o modulo de consulta
-	public void darEntrada();
 }

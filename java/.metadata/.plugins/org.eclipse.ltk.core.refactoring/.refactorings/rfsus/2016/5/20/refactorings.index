@@ -1,1 +1,17 @@
 1462972111039	Rename resource 'sensores.so'
+1463093287433	Delete element
+1463094660763	Rename type 'IRfidAtendimento'
+1463094904108	Rename type 'IRfidConsulta'
+1463094939305	Rename type 'ISensores'
+1463094960313	Rename type 'ISensores_'
+1463094965701	Rename type 'IRfidConsulta_'
+1463094969259	Rename type 'IRfidAtendimento_'
+1463095075859	Delete elements
+1463165977857	Rename type 'ExecutorConsulta'
+1463165988690	Rename type 'Consulta'
+1463165997793	Rename type 'IConsulta'
+1463166052738	Rename type 'ILeitura'
+1463166063559	Rename type 'ExecutorLeitura'
+1463166072076	Rename type 'Leitura'
+1463166127757	Rename type 'IConsulta'
+1463166206135	Rename type 'ISensores'

@@ -10,12 +10,11 @@ import com.mongodb.DBCursor;
 
 import br.edu.ifba.rfsus.bean.Paciente;
 
+/*Esta classe é uma instancia da entidade Paciente presente no banco de dados no decorrer do software*/
 public class FachadaPaciente {
 	private static FachadaPaciente instancia = null;
 
-	private FachadaPaciente() {
-		
-	}
+	private FachadaPaciente() {} // Construtor 
 
 	public static FachadaPaciente getInstancia() {
 		if (instancia == null) {
@@ -24,6 +23,10 @@ public class FachadaPaciente {
 		return instancia;
 	}
 
+	/* Realiza a pesquisar de um registro na entidade paciente presente no 
+	 * banco de dados compativel com o id passado como argumento
+	 */
+	
 	public Paciente getPacienteById(String rfid) {
 		System.out.println("RFID: " + rfid);
 		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");

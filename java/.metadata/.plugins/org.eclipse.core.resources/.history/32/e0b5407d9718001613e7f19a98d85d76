@@ -1,0 +1,16 @@
+package br.edu.ifba.rfsus.jna.sensores;
+
+import com.sun.jna.Native;
+import com.sun.jna.Platform;
+
+public class FabricaSensores {
+	public	static ISensores_ getInstancia(){
+		ISensores_ sensores = null;
+		if(Platform.isLinux()) {
+			sensores = (ISensores_) Native.loadLibrary("sensores.so", ISensores_.class);
+		} else if (Platform.isWindows()) {
+			sensores = (ISensores_) Native.loadLibrary("sensores.dll", ISensores_.class);
+		}
+		return sensores;
+	} 
+}

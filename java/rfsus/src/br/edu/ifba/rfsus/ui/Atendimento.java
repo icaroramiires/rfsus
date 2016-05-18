@@ -7,8 +7,10 @@ import br.edu.ifba.rfsus.bd.FachadaPaciente;
 import br.edu.ifba.rfsus.bean.Paciente;
 
 @SuppressWarnings("serial")
-// TODO Modificar IdentificacaoUI para AtendimentoUI
-public class Atendimento extends IdentificacaoUI implements IAtendimento {
+
+/* Esta interface define os metodos de que compõe a interface grafica Consulta */
+
+public class Atendimento extends AtendimentoUI implements IAtendimento {
 
 	@Override
 	public void exibir() {
@@ -19,7 +21,6 @@ public class Atendimento extends IdentificacaoUI implements IAtendimento {
 	@Override
 	public void setRfid(String rfid) {
 		this.tfIdentificacao.setText(rfid);
-
 		pesquisarPorRfid(rfid);
 	}
 
@@ -38,14 +39,6 @@ public class Atendimento extends IdentificacaoUI implements IAtendimento {
 		for(String x : paciente.getObservacoes()){
 			info.addElement(x);
 		}
-		
 		this.jlObservacoes.setModel(info);
 	}
-
-	@Override
-	public void darEntrada() {
-		//jbntDarEntrada.addActionListener(this);
-
-	}
-
 }

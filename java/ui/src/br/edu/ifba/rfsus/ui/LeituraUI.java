@@ -29,7 +29,6 @@ public class LeituraUI extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jlblNome = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jlblLeituraCardiaca = new javax.swing.JLabel();
         jlblLeituraTemp = new javax.swing.JLabel();
@@ -42,6 +41,7 @@ public class LeituraUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jlblNome = new javax.swing.JLabel();
         jbtnSalvar = new javax.swing.JButton();
         jbtnCancelar = new javax.swing.JButton();
         btnLeitura = new javax.swing.JButton();
@@ -51,8 +51,6 @@ public class LeituraUI extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Atendimento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
         jLabel1.setText("Nome:");
-
-        jlblNome.setText("-");
 
         jlblLeituraCardiaca.setFont(new java.awt.Font("Droid Sans Fallback", 0, 24)); // NOI18N
         jlblLeituraCardiaca.setText("-");
@@ -81,6 +79,8 @@ public class LeituraUI extends javax.swing.JFrame {
 
         jLabel8.setText("mmHg");
 
+        jlblNome.setText("-");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -93,7 +93,7 @@ public class LeituraUI extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlblNome)
-                        .addGap(0, 421, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
@@ -110,7 +110,7 @@ public class LeituraUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7))
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jlblPressaoS)
@@ -166,10 +166,11 @@ public class LeituraUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnLeitura, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbtnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtnCancelar)))
+                        .addComponent(jbtnCancelar)
+                        .addGap(18, 18, 18)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -177,12 +178,12 @@ public class LeituraUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLeitura)
                     .addComponent(jbtnSalvar)
-                    .addComponent(jbtnCancelar)
-                    .addComponent(btnLeitura))
-                .addContainerGap())
+                    .addComponent(jbtnCancelar))
+                .addGap(21, 21, 21))
         );
 
         pack();

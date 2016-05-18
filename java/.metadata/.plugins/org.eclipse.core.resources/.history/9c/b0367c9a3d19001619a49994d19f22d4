@@ -1,0 +1,27 @@
+package br.edu.ifba.rfsus;
+
+import br.edu.ifba.rfsus.bd.FachadaBD;
+import br.edu.ifba.rfsus.jna.rfid.LeitorRfidConsulta;
+
+import br.edu.ifba.rfsus.ui.Historico;
+
+public class ExecutorHistorico {
+
+	private static final String PORTA_RFID = "/dev/ttyUSB0";
+
+	public static void main(String[] args) throws InterruptedException {
+		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "root");
+
+		IHistorico consulta = new Historico();
+		
+		LeitorRfidConsulta leitor = new LeitorRfidConsulta(PORTA_RFID, consulta);
+		Thread tLeitor = new Thread(leitor);
+		tLeitor.start();
+		
+		consulta.exibir();
+		
+		
+				
+	}
+
+}

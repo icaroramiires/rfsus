@@ -1,23 +1,15 @@
 package br.edu.ifba.rfsus;
 
-import br.edu.ifba.rfsus.bean.Paciente;
+import br.edu.ifba.rfsus.bean.Sensores;
 
-public interface IConsulta {
-	// Passos para identificacao por RFID:
+/* Esta interface define os metodos de que compõe a interface grafica Leitura */
 
-	// 1. exibir interface grafica
+public interface IConsulta extends IAtendimento {
+	// 1. Exibe a Interface grafica
 	public void exibir();
-
-	// 2. capturar e exibir o RFID
-	public void setRfid(String rfid);
-	/*
-	 *  isenrir interface de sensores	
-	 */
+	// 2. herda os metodos do IAtendimento;
 	
-	public void pesquisarPorRfid(String rfid);
-
-	// 4. apos retorna o paciente, deve exibir os dados dele para conferencia
-	public void setDadosPaciente(Paciente paciente);
+	//3. Atribui o valor de sensores 
+	public void setSensores(Sensores sensores);
 	
-	public void atendimento();
 }

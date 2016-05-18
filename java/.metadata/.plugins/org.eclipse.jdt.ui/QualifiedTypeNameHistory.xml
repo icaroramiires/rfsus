@@ -40,4 +40,6 @@
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.ILeitura"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.Leitura"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.sensores.LeituraSensoresConsulta"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.IAtendimento"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.bean.Sensores"/>
 </qualifiedTypeNameHistroy>

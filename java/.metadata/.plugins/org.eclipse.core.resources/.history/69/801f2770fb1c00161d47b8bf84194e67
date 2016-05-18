@@ -1,0 +1,13 @@
+package br.edu.ifba.rfsus;
+
+import br.edu.ifba.rfsus.bean.Sensores;
+
+/* Esta interface define os metodos de que compõe a interface grafica Leitura */
+
+public interface IConsulta extends IAtendimento {
+	// vai ter setSensores(Sensores);
+	public void exibir();
+	public void setNome(String nome);
+	public void setSensosres(Sensores sensores);
+	
+}
