@@ -10,7 +10,7 @@ import br.edu.ifba.rfsus.ui.Consulta;
 /* Classe Responsavel por exibir a tela de leitura dos dados dos sensores */
 
 public class ExecutorConsulta {
-	private static final String PORTA_RFID = "/dev/ttyUSB0";
+	private static final String PORTA_RFID = "/dev/ttyUSB2";
 	private static final String PORTA_SENSORES = "/dev/ttyUSB1";
 
 	public static void main(String[] args) throws InterruptedException {
@@ -27,5 +27,6 @@ public class ExecutorConsulta {
 		tLeitorSensores.start();
 		
 		consulta.exibir();
+		
 	}
 }

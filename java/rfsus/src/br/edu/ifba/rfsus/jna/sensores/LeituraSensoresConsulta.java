@@ -30,10 +30,10 @@ public class LeituraSensoresConsulta implements Runnable {
 				sensores.setTemp(dadosSensores.getTemp());
 				sensores.setPressaoS(dadosSensores.getPressaoS());
 				sensores.setPressaoD(dadosSensores.getPressaoD());
-				consulta.setSensores(sensores);
+				consulta.setSensores(sensores);	
 			}
 			try {
-				Thread.sleep(500);
+				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

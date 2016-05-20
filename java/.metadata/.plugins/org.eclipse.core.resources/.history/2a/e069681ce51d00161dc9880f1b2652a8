@@ -1,0 +1,13 @@
+package br.edu.ifba.rfsus.ui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import br.edu.ifba.rfsus.IConsulta;
+import br.edu.ifba.rfsus.bd.FachadaPaciente;
+import br.edu.ifba.rfsus.bean.Paciente;
+import br.edu.ifba.rfsus.bean.Sensores;
+
+// TODO mudar de Leitura Para consulta
+public class Consulta extends LeituraUI implements IConsulta {
+}
