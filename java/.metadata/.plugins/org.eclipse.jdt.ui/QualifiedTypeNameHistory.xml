@@ -6,9 +6,6 @@
 <fullyQualifiedTypeName name="com.mongodb.MongoClient"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="com.mongodb.client.MongoDatabase"/>
-<fullyQualifiedTypeName name="com.mongodb.DBCollection"/>
-<fullyQualifiedTypeName name="com.mongodb.DBObject"/>
-<fullyQualifiedTypeName name="com.mongodb.BasicDBObject"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="com.mongodb.DBCursor"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.ConsultaUI"/>
@@ -18,7 +15,6 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.swing.JList"/>
 <fullyQualifiedTypeName name="javax.swing.DefaultListModel"/>
-<fullyQualifiedTypeName name="br.edu.ifba.rfsus.bd.FachadaBD"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.IConsulta"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.ui.Consulta"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.LeitorRfidConsulta"/>
@@ -37,11 +33,16 @@
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.sensores.LeituraSensoresConsulta"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.IAtendimento"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.bean.Paciente"/>
-<fullyQualifiedTypeName name="br.edu.ifba.rfsus.bd.FachadaPaciente"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.IRfid"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.sensores.FabricaSensores"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.jna.rfid.FabricaRfid"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="br.edu.ifba.rfsus.bean.Sensores"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.bd.FachadaBD"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Document"/>
+<fullyQualifiedTypeName name="com.mongodb.DBObject"/>
+<fullyQualifiedTypeName name="com.mongodb.DBCollection"/>
+<fullyQualifiedTypeName name="com.mongodb.BasicDBObject"/>
+<fullyQualifiedTypeName name="br.edu.ifba.rfsus.bd.FachadaPaciente"/>
 </qualifiedTypeNameHistroy>

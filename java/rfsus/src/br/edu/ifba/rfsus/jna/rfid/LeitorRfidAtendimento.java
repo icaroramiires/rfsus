@@ -19,6 +19,12 @@ public class LeitorRfidAtendimento implements Runnable {
 		continuar = true;
 		
 		IRfid rfid = FabricaRfid.getInstancia();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		rfid.iniciar(porta);
 		while (continuar) {
 			int resultado = rfid.ler(); // convenção de c/c++ se for zero é sucesso

@@ -1,20 +1,19 @@
-10:06:22 **** Build of configuration Release for project sensores ****
+16:42:28 **** Incremental Build of configuration Debug for project sensores ****
 make all 
-Building file: ../src/Extern.cpp
+Building file: ../src/Test.cpp
 Invoking: GCC C++ Compiler
-g++ -I"/home/webmaster/workspace/rfsus/cpp/sensores/include" -O3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/Extern.d" -MT"src/Extern.d" -o "src/Extern.o" "../src/Extern.cpp"
-Finished building: ../src/Extern.cpp
+g++ -I"/home/webmaster/workspace/rfsus/cpp/sensores/include" -O0 -g3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/Test.d" -MT"src/Test.d" -o "src/Test.o" "../src/Test.cpp"
+../src/Test.cpp: In function ‘int main(int, char**)’:
+../src/Test.cpp:24:62: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+  ComunicacaoConsulta com = ComunicacaoConsulta("/dev/ttyUSB0");
+                                                              ^
+Finished building: ../src/Test.cpp
  
-Building file: ../src/Sensores.cpp
-Invoking: GCC C++ Compiler
-g++ -I"/home/webmaster/workspace/rfsus/cpp/sensores/include" -O3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/Sensores.d" -MT"src/Sensores.d" -o "src/Sensores.o" "../src/Sensores.cpp"
-Finished building: ../src/Sensores.cpp
- 
-Building target: sensores.so
+Building target: sensores
 Invoking: GCC C++ Linker
-g++ -shared -o "sensores.so"  ./src/Extern.o ./src/Sensores.o   
-Finished building target: sensores.so
+g++  -o "sensores"  ./src/Extern.o ./src/Sensores.o ./src/Test.o   
+Finished building target: sensores
  
 
-10:06:23 Build Finished (took 873ms)
+16:42:29 Build Finished (took 648ms)
 

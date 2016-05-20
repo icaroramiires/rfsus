@@ -3,10 +3,13 @@ package br.edu.ifba.rfsus.bd;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.w3c.dom.Document;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 
 import br.edu.ifba.rfsus.bean.Paciente;
 
@@ -49,5 +52,17 @@ public class FachadaPaciente {
 		
 		return paciente;
 	}
-
+	
+	public void insertExame(String rfid) {
+		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");
+		BasicDBObject options = new BasicDBObject();
+		db.createCollection("exame", options); // criar uma nova coleção
+		
+		// inserer na colleção exame
+		DBCollection collection = db.getCollection("exame");
+		BasicDBObject document = new BasicDBObject();
+		document.put("rfid", rfid);
+		
+		collection.insert(document);
+	}
 }

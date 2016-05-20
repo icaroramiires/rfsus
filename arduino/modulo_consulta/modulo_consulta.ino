@@ -15,7 +15,7 @@ esl:: MLX90614 termometro; // instancia do sensor de temperatura
 int potenciomentroPin = 2; // simula a pressao sistolica
 int batimentosSensorPin = 0; // seta a porta de leitura do sensor como Analogic 0
 double alpha = 0.75; // isto  e uma forma de tirar uma media dos batimento ele pega 75 dos anteriores + 25 do atual
-int periodo = 20; // tempo de atraso na leitura dos sensores 
+int periodo = 500; // tempo de atraso na leitura dos sensores 
 
 struct Dados { 
   int temp = 0; // TEMPERATURA
@@ -27,7 +27,7 @@ struct Dados {
 Dados dados; // conjunto de dados do sensores  
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   while(!Serial); // expecifico para o arduino leonardo ou arduino Pro Micro
   Wire.begin();
   termometro.init();

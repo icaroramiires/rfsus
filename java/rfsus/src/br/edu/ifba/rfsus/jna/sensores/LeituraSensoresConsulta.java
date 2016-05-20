@@ -5,7 +5,7 @@ import br.edu.ifba.rfsus.bean.Sensores;
 import br.edu.ifba.rfsus.jna.rfid.FabricaRfid;
 import br.edu.ifba.rfsus.jna.rfid.IRfid;
 
-/* Esta Classe é responsavel por realizar a leitura dos sensores de batimento, temperatura e batimentos no modulo de consulta */ 
+/* Esta Classe é responsavel por realizar a leitura dos sensores de batimento, temperatura e batimentos no modulo de consulta */
 
 public class LeituraSensoresConsulta implements Runnable {
 	private IConsulta consulta = null;
@@ -22,24 +22,33 @@ public class LeituraSensoresConsulta implements Runnable {
 		Sensores sensores = new Sensores();
 		continuar = true;
 		ISensores dadosSensores = FabricaSensores.getInstancia();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		dadosSensores.iniciar(porta);
 		while (continuar) {
 			int resultado = dadosSensores.ler();
-			if (resultado == 0) {	
+			System.out.println(resultado);
+			if (resultado == 0) {
 				sensores.setBpm(dadosSensores.getBpm());
 				sensores.setTemp(dadosSensores.getTemp());
 				sensores.setPressaoS(dadosSensores.getPressaoS());
 				sensores.setPressaoD(dadosSensores.getPressaoD());
-				consulta.setSensores(sensores);	
+				consulta.setSensores(sensores);
 			}
+
 			try {
-				Thread.sleep(20);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 		dadosSensores.finalizar();
 	}
+
 	public void parar() {
 		continuar = false;
 	}
