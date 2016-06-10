@@ -1,0 +1,22 @@
+package br.edu.ifba.rfsus;
+
+import br.edu.ifba.rfsus.bd.FachadaBD;
+import br.edu.ifba.rfsus.ui.Consulta;
+
+/* Classe Responsavel por exibir a tela de leitura dos dados dos sensores */
+
+public class ExecutorConsulta {
+	public static void main(String[] args) throws InterruptedException {
+		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "root");
+		
+		IConsulta consulta = new Consulta();
+				
+		consulta.exibir();
+		
+		/* 
+		 * desabilitar o botão de leitura primeira instrução desabilitar leitura e habilitar gravar
+		 * click em gravar para a Thread de sensores gravar os a lista no banco habilitar a thread de leitura RFID
+		 * 
+		 * */
+	}
+}

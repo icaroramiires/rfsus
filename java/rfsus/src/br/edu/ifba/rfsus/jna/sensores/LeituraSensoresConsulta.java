@@ -1,5 +1,7 @@
 package br.edu.ifba.rfsus.jna.sensores;
 
+import java.util.ArrayList;
+
 import br.edu.ifba.rfsus.IConsulta;
 import br.edu.ifba.rfsus.bean.Sensores;
 import br.edu.ifba.rfsus.jna.rfid.FabricaRfid;
@@ -11,6 +13,7 @@ public class LeituraSensoresConsulta implements Runnable {
 	private IConsulta consulta = null;
 	private boolean continuar = false;
 	private String porta = null;
+	private ArrayList<Sensores> registroSensores = new ArrayList<>();
 
 	public LeituraSensoresConsulta(String porta, IConsulta consulta) {
 		this.porta = porta;
@@ -19,7 +22,6 @@ public class LeituraSensoresConsulta implements Runnable {
 
 	@Override
 	public void run() {
-		Sensores sensores = new Sensores();
 		continuar = true;
 		ISensores dadosSensores = FabricaSensores.getInstancia();
 		try {
@@ -31,13 +33,14 @@ public class LeituraSensoresConsulta implements Runnable {
 		dadosSensores.iniciar(porta);
 		while (continuar) {
 			int resultado = dadosSensores.ler();
-			System.out.println(resultado);
 			if (resultado == 0) {
+				Sensores sensores = new Sensores();
 				sensores.setBpm(dadosSensores.getBpm());
 				sensores.setTemp(dadosSensores.getTemp());
 				sensores.setPressaoS(dadosSensores.getPressaoS());
 				sensores.setPressaoD(dadosSensores.getPressaoD());
 				consulta.setSensores(sensores);
+				registroSensores.add(sensores);
 			}
 
 			try {
@@ -51,5 +54,9 @@ public class LeituraSensoresConsulta implements Runnable {
 
 	public void parar() {
 		continuar = false;
+	}
+	
+	public ArrayList<Sensores> getRegistroSensores() {
+		return registroSensores;
 	}
 }

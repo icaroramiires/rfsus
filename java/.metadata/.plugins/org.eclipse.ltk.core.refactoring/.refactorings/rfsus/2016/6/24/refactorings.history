@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;co&apos; in &apos;br.edu.ifba.rfsus.bd.FachadaBD.gravarExame(...)&apos; to &apos;colecaoExame&apos;&#x0A;- Original project: &apos;rfsus&apos;&#x0A;- Original element: &apos;br.edu.ifba.rfsus.bd.FachadaBD.gravarExame(String).co&apos;&#x0A;- Renamed element: &apos;co&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;co&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;br.edu.ifba.rfsus.bd{FachadaBD.java[FachadaBD~gravarExame~QString;@co!3488!3531!3501!3502!QDBCollection;!0!false" name="colecaoExame" references="true" stamp="1465589427403" version="1.0"/>
+</session>

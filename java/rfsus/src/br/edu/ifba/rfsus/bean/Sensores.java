@@ -37,5 +37,10 @@ public class Sensores {
 	public void setPressaoD(int pressaoD) {
 		this.pressaoD = pressaoD;
 	}
+	
+	@Override
+	public String toString() {
+		return "BPM: " + getBpm() + "\n"+ "TEMP: " + getTemp();
+	}
 
 }

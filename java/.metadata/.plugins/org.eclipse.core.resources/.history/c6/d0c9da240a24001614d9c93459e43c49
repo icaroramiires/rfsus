@@ -1,0 +1,126 @@
+package br.edu.ifba.rfsus.bd;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
+import com.mongodb.client.MongoDatabase;
+
+import br.edu.ifba.rfsus.bean.Paciente;
+
+/* Esta classe é responsavel por gerar uma instancia de conexão com banco de dados no decorrer do software */ 
+
+public class FachadaBD {
+	private static FachadaBD instancia = null;
+
+	private String host;
+	private int port;
+	private String dbName;
+	private String user;
+	private String password;
+
+	private FachadaBD() {} // Construtor 
+
+	public static FachadaBD getInstancia() {
+		if (instancia == null) {
+			instancia = new FachadaBD();
+		}
+		return instancia;
+	}
+
+	public String getHost() {
+		return host;
+	}
+
+	public void setHost(String host) {
+		this.host = host;
+	}
+
+	public int getPort() {
+		return port;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
+	}
+
+	public String getDbName() {
+		return dbName;
+	}
+
+	public void setDbName(String dbName) {
+		this.dbName = dbName;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void configAll(String host, int port, String dbName, String user, String password) {
+		this.setHost(host);
+		this.setPort(port);
+		this.setDbName(dbName);
+		this.setUser(user);
+		this.setPassword(password);
+	}
+
+	public MongoClient configClient() {
+		ServerAddress server = new ServerAddress(host, port);
+		MongoCredential credential = MongoCredential.createCredential(user, dbName, password.toCharArray());
+
+		MongoClient client = new MongoClient(server, Arrays.asList(credential));
+
+		return client;
+	}
+
+	public MongoDatabase configDB() {
+		MongoDatabase db = this.configClient().getDatabase(dbName);
+		return db;
+	}
+	
+	/* Realiza a pesquisar de um registro na entidade paciente presente no 
+	 * banco de dados compativel com o id passado como argumento
+	 */
+	
+	public Paciente getPacienteById(String rfid) {
+		System.out.println("RFID: " + rfid);
+		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");
+
+		DBCollection collection = db.getCollection("paciente");
+
+		BasicDBObject query = new BasicDBObject("rfid", rfid);
+
+		DBCursor cursor = collection.find(query);
+
+		Paciente paciente = new Paciente();
+
+		paciente.setRg((String) cursor.one().get("rg"));
+		paciente.setNome((String) cursor.one().get("nome"));
+		paciente.setDataNascimento((Date) cursor.one().get("data_nascimento"));
+		paciente.setAltura((Double)cursor.one().get("altura")); 
+		paciente.setPeso((Double)cursor.one().get("peso")); 
+		paciente.setTipoSanguineo((String)cursor.one().get("tipo_sanguineo")); 
+		paciente.setObservacoes((ArrayList<String>)cursor.one().get("observacao"));
+		
+		return paciente;
+	}
+}

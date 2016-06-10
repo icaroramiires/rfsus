@@ -1,0 +1,28 @@
+package br.edu.ifba.rfsus.bd;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import org.w3c.dom.Document;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+
+import br.edu.ifba.rfsus.bean.Paciente;
+
+/*Esta classe é uma instancia da entidade Paciente presente no banco de dados no decorrer do software*/
+public class FachadaPaciente {
+	private static FachadaPaciente instancia = null;
+
+	private FachadaPaciente() {} // Construtor 
+
+	public static FachadaPaciente getInstancia() {
+		if (instancia == null) {
+			instancia = new FachadaPaciente();
+		}
+		return instancia;
+	}
+}

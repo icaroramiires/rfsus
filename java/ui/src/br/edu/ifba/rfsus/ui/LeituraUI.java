@@ -42,7 +42,7 @@ public class LeituraUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jlblNome = new javax.swing.JLabel();
-        jbtnSalvar = new javax.swing.JButton();
+        jbtnGravar = new javax.swing.JButton();
         jbtnCancelar = new javax.swing.JButton();
         btnLeitura = new javax.swing.JButton();
 
@@ -149,7 +149,7 @@ public class LeituraUI extends javax.swing.JFrame {
                 .addContainerGap(106, Short.MAX_VALUE))
         );
 
-        jbtnSalvar.setText("Salvar");
+        jbtnGravar.setText("Gravar");
 
         jbtnCancelar.setText("Cancelar");
 
@@ -167,7 +167,7 @@ public class LeituraUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnLeitura, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbtnCancelar)
                         .addGap(18, 18, 18)))
@@ -181,7 +181,7 @@ public class LeituraUI extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLeitura)
-                    .addComponent(jbtnSalvar)
+                    .addComponent(jbtnGravar)
                     .addComponent(jbtnCancelar))
                 .addGap(21, 21, 21))
         );
@@ -238,7 +238,7 @@ public class LeituraUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     protected javax.swing.JButton jbtnCancelar;
-    protected javax.swing.JButton jbtnSalvar;
+    protected javax.swing.JButton jbtnGravar;
     protected javax.swing.JLabel jlblLeituraCardiaca;
     protected javax.swing.JLabel jlblLeituraTemp;
     protected javax.swing.JLabel jlblNome;

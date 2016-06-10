@@ -1,11 +1,26 @@
 package br.edu.ifba.rfsus.bd;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.bson.types.ObjectId;
+
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoDatabase;
+
+import br.edu.ifba.rfsus.bean.Paciente;
+import br.edu.ifba.rfsus.bean.Sensores;
 
 /* Esta classe é responsavel por gerar uma instancia de conexão com banco de dados no decorrer do software */ 
 
@@ -78,7 +93,7 @@ public class FachadaBD {
 	public MongoClient configClient() {
 		ServerAddress server = new ServerAddress(host, port);
 		MongoCredential credential = MongoCredential.createCredential(user, dbName, password.toCharArray());
-
+		
 		MongoClient client = new MongoClient(server, Arrays.asList(credential));
 
 		return client;
@@ -87,5 +102,77 @@ public class FachadaBD {
 	public MongoDatabase configDB() {
 		MongoDatabase db = this.configClient().getDatabase(dbName);
 		return db;
+	}
+	
+	/* Realiza a pesquisar de um registro na entidade paciente presente no 
+	 * banco de dados compativel com o id passado como argumento
+	 */
+	
+	public Paciente getPacienteById(String rfid) {
+		System.out.println("RFID: " + rfid);
+		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");
+
+		DBCollection collection = db.getCollection("paciente");
+
+		BasicDBObject query = new BasicDBObject("rfid", rfid);
+
+		DBCursor cursor = collection.find(query);
+
+		Paciente paciente = new Paciente();
+
+		paciente.setRg((String) cursor.one().get("rg"));
+		paciente.setNome((String) cursor.one().get("nome"));
+		paciente.setDataNascimento((Date) cursor.one().get("data_nascimento"));
+		paciente.setAltura((Double)cursor.one().get("altura")); 
+		paciente.setPeso((Double)cursor.one().get("peso")); 
+		paciente.setTipoSanguineo((String)cursor.one().get("tipo_sanguineo")); 
+		paciente.setObservacoes((ArrayList<String>)cursor.one().get("observacao"));
+		
+		return paciente;
+	}
+	
+	/*
+	 * Registra um novo exame no banco de dados após a leitura dos dados
+	 */
+	// TODO tipo de returno do objecid() passar para a outra função
+	public ObjectId gravarExame(String rfid) {
+		
+		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");
+		DBCollection colecaoExame = db.getCollection("exame");
+		
+		Map<String, Object> novoExame = new HashMap<String, Object>();
+		
+		ObjectId objectId = new ObjectId();
+		
+		novoExame.put("idExame", objectId);
+		novoExame.put("rfid", rfid);
+		novoExame.put("data", new Date());
+		
+		colecaoExame.insert(new BasicDBObject(novoExame));	
+		
+		return objectId;
+	}
+	
+	public void gravarSensoresDoExame(ObjectId exameId, ArrayList<Sensores> registroSensores) {
+		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");
+		DBCollection  colecaoBiometria = db.getCollection("biometria");
+		
+		BasicDBObject biometria = new BasicDBObject();
+		biometria.put("idExame", exameId);
+		
+		BasicDBList sensores = new BasicDBList();
+		for(int i = 0; i < registroSensores.size(); i++) {
+			BasicDBObject sensor = new BasicDBObject();
+			sensor.put("bpm", registroSensores.get(i).getBpm());
+			sensor.put("temp", registroSensores.get(i).getTemp());
+			sensor.put("pressao_s", registroSensores.get(i).getPressaoS());
+			sensor.put("pressao_d", registroSensores.get(i).getPressaoD());
+			sensor.put("indice", i);
+			sensores.add(sensor);
+		}
+		
+		biometria.put("sensores", sensores);
+		
+		 colecaoBiometria.insert(new BasicDBObject(biometria));
 	}
 }

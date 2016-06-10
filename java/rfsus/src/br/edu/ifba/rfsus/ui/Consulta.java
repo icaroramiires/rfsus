@@ -2,9 +2,12 @@ package br.edu.ifba.rfsus.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import org.bson.types.ObjectId;
 
 import br.edu.ifba.rfsus.IConsulta;
-import br.edu.ifba.rfsus.bd.FachadaPaciente;
+import br.edu.ifba.rfsus.bd.FachadaBD;
 import br.edu.ifba.rfsus.bean.Paciente;
 import br.edu.ifba.rfsus.bean.Sensores;
 import br.edu.ifba.rfsus.jna.rfid.LeitorRfidAtendimento;
@@ -12,12 +15,17 @@ import br.edu.ifba.rfsus.jna.sensores.LeituraSensoresConsulta;
 
 // TODO mudar de Leitura Para consulta
 public class Consulta extends LeituraUI implements IConsulta {
-	private static final String PORTA_SENSORES = "/dev/ttyUSB0";
-	private static final String PORTA_RFID = "/dev/ttyUSB1";
+	private static final String PORTA_SENSORES = "/dev/ttyUSB1";
+	private static final String PORTA_RFID = "/dev/ttyUSB2";
+	
 	private Sensores sensores = new Sensores();
+	
 	private LeituraSensoresConsulta leitorSensores;
 	private LeitorRfidAtendimento leitorRfid;
-	// atributo rfid mandar pro banco
+	
+	private String rfid;
+	private ObjectId exameId = null;
+	
 
 	public Consulta() {
 		leitorSensores = new LeituraSensoresConsulta(PORTA_SENSORES, this);
@@ -28,6 +36,7 @@ public class Consulta extends LeituraUI implements IConsulta {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				leitorRfid.parar();
+				// limpar a lista 
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e1) {
@@ -35,19 +44,24 @@ public class Consulta extends LeituraUI implements IConsulta {
 					e1.printStackTrace();
 				}
 				btnLeitura.setEnabled(false);
-				jbtnSalvar.setEnabled(true);
 				iniciarLeitorSensores();
+				jbtnGravar.setEnabled(true);
 			}
 		});
 		
-		jbtnSalvar.addActionListener(new ActionListener() {
+		jbtnGravar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// para a trhead de leitura
+				leitorSensores.parar();
 				// grava no banco 
+				exameId = FachadaBD.getInstancia().gravarExame(rfid);
+				FachadaBD.getInstancia().gravarSensoresDoExame(exameId, leitorSensores.getRegistroSensores());
+				// limpa os registros do array list
+				leitorSensores.getRegistroSensores().clear();
 				//habilita a thread de rfid
-
+				iniciarLeitorRfid();
 			}
 		});
 	}
@@ -58,7 +72,7 @@ public class Consulta extends LeituraUI implements IConsulta {
 		setVisible(true);
 		iniciarLeitorRfid();
 		btnLeitura.setEnabled(false);
-		jbtnSalvar.setEnabled(false);
+		jbtnGravar.setEnabled(false);
 	}
 
 	private void iniciarLeitorRfid() {
@@ -74,11 +88,12 @@ public class Consulta extends LeituraUI implements IConsulta {
 	@Override
 	public void setRfid(String rfid) {
 		pesquisarPorRfid(rfid);
+		this.rfid = rfid;
 	}
 
 	@Override
 	public void pesquisarPorRfid(String rfid) {
-		Paciente paciente = FachadaPaciente.getInstancia().getPacienteById(rfid);
+		Paciente paciente = FachadaBD.getInstancia().getPacienteById(rfid);
 		setDadosPaciente(paciente);
 		btnLeitura.setEnabled(true);
 	}
@@ -92,7 +107,7 @@ public class Consulta extends LeituraUI implements IConsulta {
 	public void setSensores(Sensores sensores) {
 		this.sensores = sensores;
 		atualizarVizualizacaoSensores();
-		// add list sensores
+		System.out.println(sensores.toString());
 	}
 
 	private void atualizarVizualizacaoSensores() {
@@ -101,7 +116,16 @@ public class Consulta extends LeituraUI implements IConsulta {
 		jlblLeituraTemp.setText(sensores.getTemp() + "");
 		jlblPressaoS.setText(sensores.getPressaoS() + "");
 		jlblPressaoD.setText(sensores.getPressaoD() + "");
-		// TODO adicionar rotina de gravação no banco de dados
 	}
 	
+	private void imprimirSensores() {
+		ArrayList<Sensores> registroSensores = leitorSensores.getRegistroSensores();
+		System.out.println(registroSensores);
+		for(int i = 0; i < registroSensores.size(); i++) {
+			System.out.println("indice: " + i);
+			System.out.println("bpm: " + registroSensores.get(i).getBpm());
+			System.out.println("temp: "+ registroSensores.get(i).getTemp());
+			System.out.println("P S/D: " + registroSensores.get(i).getPressaoS() + "/" + registroSensores.get(i).getPressaoD());
+		}
+	}
 }

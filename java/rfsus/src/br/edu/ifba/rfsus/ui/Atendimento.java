@@ -3,7 +3,7 @@ package br.edu.ifba.rfsus.ui;
 import javax.swing.DefaultListModel;
 
 import br.edu.ifba.rfsus.IAtendimento;
-import br.edu.ifba.rfsus.bd.FachadaPaciente;
+import br.edu.ifba.rfsus.bd.FachadaBD;
 import br.edu.ifba.rfsus.bean.Paciente;
 
 @SuppressWarnings("serial")
@@ -26,7 +26,7 @@ public class Atendimento extends AtendimentoUI implements IAtendimento {
 
 	@Override
 	public void pesquisarPorRfid(String rfid) {
-		Paciente paciente = FachadaPaciente.getInstancia().getPacienteById(rfid);
+		Paciente paciente = FachadaBD.getInstancia().getPacienteById(rfid);
 		this.setDadosPaciente(paciente);
 	}
 

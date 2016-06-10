@@ -1,0 +1,127 @@
+package br.edu.ifba.rfsus.ui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import org.bson.types.ObjectId;
+
+import br.edu.ifba.rfsus.IConsulta;
+import br.edu.ifba.rfsus.bd.FachadaBD;
+import br.edu.ifba.rfsus.bean.Paciente;
+import br.edu.ifba.rfsus.bean.Sensores;
+import br.edu.ifba.rfsus.jna.rfid.LeitorRfidAtendimento;
+import br.edu.ifba.rfsus.jna.sensores.LeituraSensoresConsulta;
+
+// TODO mudar de Leitura Para consulta
+public class Consulta extends LeituraUI implements IConsulta {
+	private static final String PORTA_SENSORES = "/dev/ttyUSB1";
+	private static final String PORTA_RFID = "/dev/ttyUSB0";
+	
+	private Sensores sensores = new Sensores();
+	
+	private LeituraSensoresConsulta leitorSensores;
+	private LeitorRfidAtendimento leitorRfid;
+	
+	private String rfid;
+	private ObjectId exameId = null;
+	private ArrayList<Sensores> registroSensores = new ArrayList<>();
+
+	public Consulta() {
+		leitorSensores = new LeituraSensoresConsulta(PORTA_SENSORES, this);
+		leitorRfid = new LeitorRfidAtendimento(PORTA_RFID, this);
+		
+		btnLeitura.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				leitorRfid.parar();
+				// limpar a lista 
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				btnLeitura.setEnabled(false);
+				iniciarLeitorSensores();
+				jbtnGravar.setEnabled(true);
+			}
+		});
+		
+		jbtnGravar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// para a trhead de leitura
+				leitorSensores.parar();
+				// grava no banco 
+				exameId = FachadaBD.getInstancia().gravarExame(rfid);
+				
+				//imprimirSensores();
+				//habilita a thread de rfid
+			}
+		});
+	}
+
+	@Override
+	public void exibir() {
+		pack();
+		setVisible(true);
+		iniciarLeitorRfid();
+		btnLeitura.setEnabled(false);
+		jbtnGravar.setEnabled(false);
+	}
+
+	private void iniciarLeitorRfid() {
+		Thread tLeitorAtendimento = new Thread(leitorRfid);
+		tLeitorAtendimento.start();
+	}
+	
+	private void iniciarLeitorSensores() {
+		Thread tLeitorSensores = new Thread(leitorSensores);
+		tLeitorSensores.start();
+	}
+	
+	@Override
+	public void setRfid(String rfid) {
+		pesquisarPorRfid(rfid);
+		this.rfid = rfid;
+	}
+
+	@Override
+	public void pesquisarPorRfid(String rfid) {
+		Paciente paciente = FachadaBD.getInstancia().getPacienteById(rfid);
+		setDadosPaciente(paciente);
+		btnLeitura.setEnabled(true);
+	}
+
+	@Override
+	public void setDadosPaciente(Paciente paciente) {
+		jlblNome.setText(paciente.getNome());
+	}
+
+	@Override
+	public void setSensores(Sensores sensores) {
+		this.sensores = sensores;
+		atualizarVizualizacaoSensores();
+		registroSensores.add(sensores);
+	}
+
+	private void atualizarVizualizacaoSensores() {
+
+		jlblLeituraCardiaca.setText(sensores.getBpm() + "");
+		jlblLeituraTemp.setText(sensores.getTemp() + "");
+		jlblPressaoS.setText(sensores.getPressaoS() + "");
+		jlblPressaoD.setText(sensores.getPressaoD() + "");
+	}
+	
+	private void imprimirSensores() {
+		for(int i = 0; i < registroSensores.size(); i++) {
+			System.out.println("indice: " + i);
+			System.out.println("bpm: " + registroSensores.get(i).getBpm());
+			System.out.println("temp: "+ registroSensores.get(i).getTemp());
+			System.out.println("P S/D: " + registroSensores.get(i).getPressaoS() + "/" + registroSensores.get(i).getPressaoD());
+		}
+	}
+}
