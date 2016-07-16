@@ -7,7 +7,7 @@ import br.edu.ifba.rfsus.ui.Historico;
 
 public class ExecutorHistorico {
 
-	private static final String PORTA_RFID = "/dev/ttyUSB0";
+	private static final String PORTA_RFID = "/dev/ttyUSB1";
 
 	public static void main(String[] args) throws InterruptedException {
 		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "root");

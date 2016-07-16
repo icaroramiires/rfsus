@@ -134,7 +134,6 @@ public class FachadaBD {
 	/*
 	 * Registra um novo exame no banco de dados após a leitura dos dados
 	 */
-	// TODO tipo de returno do objecid() passar para a outra função
 	public ObjectId gravarExame(String rfid) {
 		
 		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");
@@ -153,6 +152,10 @@ public class FachadaBD {
 		return objectId;
 	}
 	
+	/*
+	 * Registrar os dados obtidos pela leitura dos sensores no ato da consulta
+	 * 
+	 */
 	public void gravarSensoresDoExame(ObjectId exameId, ArrayList<Sensores> registroSensores) {
 		DB db = FachadaBD.getInstancia().configClient().getDB("rfsus");
 		DBCollection  colecaoBiometria = db.getCollection("biometria");

@@ -1,0 +1,81 @@
+09:44:36 **** Incremental Build of configuration Debug for project myke ****
+make all 
+Building file: ../src/myke.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/myke.d" -MT"src/myke.d" -o "src/myke.o" "../src/myke.cpp"
+../src/myke.cpp: In function ‘void add()’:
+../src/myke.cpp:23:3: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+   gets(placa);
+   ^
+In file included from ../src/myke.cpp:5:0:
+/usr/include/stdio.h:638:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^
+../src/myke.cpp:23:3: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+   gets(placa);
+   ^
+In file included from ../src/myke.cpp:5:0:
+/usr/include/stdio.h:638:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^
+../src/myke.cpp:23:13: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+   gets(placa);
+             ^
+In file included from ../src/myke.cpp:5:0:
+/usr/include/stdio.h:638:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^
+../src/myke.cpp:26:3: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+   gets(a.marca);
+   ^
+In file included from ../src/myke.cpp:5:0:
+/usr/include/stdio.h:638:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^
+../src/myke.cpp:26:3: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+   gets(a.marca);
+   ^
+In file included from ../src/myke.cpp:5:0:
+/usr/include/stdio.h:638:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^
+../src/myke.cpp:26:15: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+   gets(a.marca);
+               ^
+In file included from ../src/myke.cpp:5:0:
+/usr/include/stdio.h:638:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^
+../src/myke.cpp:28:3: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+   gets(a.modelo);
+   ^
+In file included from ../src/myke.cpp:5:0:
+/usr/include/stdio.h:638:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^
+../src/myke.cpp:28:3: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+   gets(a.modelo);
+   ^
+In file included from ../src/myke.cpp:5:0:
+/usr/include/stdio.h:638:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^
+../src/myke.cpp:28:16: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+   gets(a.modelo);
+                ^
+In file included from ../src/myke.cpp:5:0:
+/usr/include/stdio.h:638:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^
+Finished building: ../src/myke.cpp
+ 
+Building target: myke
+Invoking: GCC C++ Linker
+g++  -o "myke"  ./src/myke.o   
+./src/myke.o: In function `add()':
+/home/webmaster/workspace/rfsus/cpp/myke/Debug/../src/myke.cpp:23: warning: the `gets' function is dangerous and should not be used.
+Finished building target: myke
+ 
+
+09:44:37 Build Finished (took 777ms)
+

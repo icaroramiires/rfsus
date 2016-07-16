@@ -9,7 +9,7 @@ public class ExecutorAtendimento {
 	private static final String PORTA_RFID = "/dev/ttyUSB0";
 
 	public static void main(String[] args) throws InterruptedException {
-		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "root");
+		FachadaBD.getInstancia().configAll("localhost", 27017, "rfsus", "admin", "");
 
 		IAtendimento atendimento = new Atendimento();
 

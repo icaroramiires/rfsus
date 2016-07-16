@@ -13,10 +13,9 @@ import br.edu.ifba.rfsus.bean.Sensores;
 import br.edu.ifba.rfsus.jna.rfid.LeitorRfidAtendimento;
 import br.edu.ifba.rfsus.jna.sensores.LeituraSensoresConsulta;
 
-// TODO mudar de Leitura Para consulta
 public class Consulta extends LeituraUI implements IConsulta {
-	private static final String PORTA_SENSORES = "/dev/ttyUSB1";
-	private static final String PORTA_RFID = "/dev/ttyUSB2";
+	private static final String PORTA_SENSORES = "/dev/ttyUSB0";
+	private static final String PORTA_RFID = "/dev/ttyUSB1";
 	
 	private Sensores sensores = new Sensores();
 	
